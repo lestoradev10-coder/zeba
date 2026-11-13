@@ -754,10 +754,11 @@ details.q[open] summary .pl{background:#fff;color:var(--gold);border:0;transform
   .why-img{height:220px}
   .how{height:auto!important}
   .how-s{position:static;height:auto;padding:70px 0 60px;display:block}
-  .how-track{width:auto;overflow-x:auto;scroll-snap-type:x mandatory;transform:none!important;padding:0 var(--pad);scrollbar-width:none}
-  .how-track::-webkit-scrollbar{display:none}
-  .how-intro{width:86vw;scroll-snap-align:start}
-  .how-card{width:84vw;height:auto;grid-template-columns:1fr;scroll-snap-align:start}
+  .how-s{overflow:visible}
+  .how-track{display:flex;flex-direction:column;align-items:stretch;gap:16px;width:auto;overflow:visible;transform:none!important;padding:0 var(--pad)}
+  .how-intro{width:100%;padding-right:0}
+  .how-hint{display:none}
+  .how-card{width:100%;height:auto;grid-template-columns:1fr}
   .how-img{height:230px}
   .how-tx{padding:8px 12px 16px}
   .wk{height:min(460px,64vh)}
@@ -1134,7 +1135,7 @@ details.q[open] summary .pl{background:var(--btn)}
   .hdr-r{gap:0}
 }
 @media(max-width:900px){
-  .hero{height:auto;display:grid}
+  .hero{height:auto;display:grid;margin-top:26px}
   .slide{position:relative;inset:auto;grid-area:1/1}
   .slide-c{min-height:270px}
   .slide .bg{flex:none;aspect-ratio:4/5;height:auto}
@@ -1143,3 +1144,52 @@ details.q[open] summary .pl{background:var(--btn)}
 .drawer:not(.open){box-shadow:none}
 /* FAQ heading: 'Frequently Asked' on the first line on desktop */
 @media(min-width:901px){.faq-l .h2{font-size:clamp(2.2rem,3.6vw,3.8rem);white-space:nowrap}}
+
+/* v29 — mobile: centered section headings, tighter gap above About, snap-friendly card rows, taller newsletter field */
+.cards-scroll{scroll-padding-left:var(--pad)}
+@media(max-width:900px){
+  /* centered headings */
+  .sec-head{flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:16px}
+  .sec-head .lead{text-align:center;margin-left:auto;margin-right:auto}
+  .eyebrow,.eyebrow.dash{justify-content:center;text-align:center}
+  .h2,.about h2.about-title,.how-intro,.faq-l,.news h2,.news p,.cta-t .h2{text-align:center}
+  .about h2.about-title,.news p{margin-left:auto;margin-right:auto}
+  .how-intro .lead,.faq-l .lead{margin-left:auto;margin-right:auto}
+  /* less empty space above About us */
+  .words{height:115vh;margin-bottom:0}
+  .words-s{height:auto;top:14svh;padding-top:9vh;padding-bottom:2vh;justify-content:flex-start}
+  .words-s .wrap{margin-bottom:0}
+  .words-hint{margin-top:2vh}
+  /* How it works: heading on one line */
+  .how-intro h2{white-space:nowrap;font-size:clamp(2.6rem,12vw,3.6rem)}
+  .how-intro h2 br{display:none}
+  #about.sec{padding-top:8px}
+  /* newsletter field: flex:1 collapsed the height once the row went vertical */
+  .news .row{flex-direction:column;gap:12px}
+  .news input{flex:none;width:100%;height:60px;font-size:1rem;padding:0 24px}
+  .news .btn{flex:none;width:100%;height:56px;justify-content:center}
+}
+
+/* About title on one line on mobile */
+@media(max-width:900px){
+  .about{grid-template-columns:minmax(0,1fr)}
+  .about>*{min-width:0}
+  .about h2.about-title{white-space:nowrap;font-size:clamp(1.6rem,8.4vw,2.6rem);letter-spacing:-.03em}
+  .about-title span{display:inline}
+  .about-title span:first-child{margin-right:.22em}
+}
+
+/* v33 — Our works: mobile cards all the same size, whole photo visible (no crop) */
+@media(max-width:900px){
+  .cards-row .wk{width:min(76vw,310px);height:auto;aspect-ratio:1277/1920;background:var(--lv);display:block;flex:none;border-radius:26px;overflow:hidden}
+  .cards-row .wk img{width:100%;height:100%;max-width:100%;object-fit:contain;object-position:center;border-radius:0}
+  /* arrows: same placement as Why choose us */
+  #works .arrows{margin-top:26px;justify-content:flex-end;align-self:stretch}
+  #works .sec-head{align-items:stretch}
+}
+
+/* v36 — Our works (mobile): all photos portrait, same card size, whole photo shown, no blur backdrop */
+@media(max-width:900px){
+  .cards-row .wk{position:relative;background:var(--lv)}
+  .cards-row .wk img{display:block;width:100%;height:100%;object-fit:cover;object-position:center top}
+}

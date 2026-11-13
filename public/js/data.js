@@ -94,10 +94,10 @@ const ABOUT_STATS = [[10, "+", "Years of experience"], [500, "+", "Brides styled
 const STATS = [["500+", "Happy clients"], ["10+", "Years experience"], ["100%", "Satisfaction"]];
 
 const WORKS = [
-  { img: "a1.webp", title: "The traditional bride", text: "Premium bridal makeup with a complete, camera-ready finish.", pkg: "bridal-signature", chips: ["Bridal makeup", "Hairstyling", "Finishing"] },
+  { img: "works-saree-bride.webp", title: "The traditional bride", text: "Premium bridal makeup with a complete, camera-ready finish.", pkg: "bridal-signature", chips: ["Bridal makeup", "Hairstyling", "Finishing"] },
   { img: "a2.webp", title: "Soft veil glow", text: "A luminous base, wispy lashes and a bespoke lip look.", pkg: "sangeet-reception", chips: ["HD base", "Lashes", "Lip look"] },
   { img: "a3.webp", title: "Bridal glam", text: "Sculpted, radiant skin with full bridal styling and draping.", pkg: "luxury-bridal", chips: ["Bridal makeup", "Nails", "Draping"] },
-  { img: "a4.webp", title: "The festive bride", text: "Elegant makeup and hair styling for the whole celebration.", pkg: "sangeet-glam", chips: ["Full-face", "Lashes", "Styling"] },
+  { img: "works-red-lehenga.webp", title: "The festive bride", text: "Elegant makeup and hair styling for the whole celebration.", pkg: "sangeet-glam", chips: ["Full-face", "Lashes", "Styling"] },
   { img: "b1.webp", title: "Colour & jewels", text: "Defined eyes and a lasting finish for a wedding-ready look.", pkg: "bridal-signature", chips: ["Eyes", "Lips", "Setting"] },
   { img: "b2.webp", title: "Evening glow", text: "A party look that stays put through the night.", pkg: "basic-makeup", chips: ["Skin prep", "Eyes", "Lips"] }
 ];

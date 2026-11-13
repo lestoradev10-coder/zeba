@@ -47,7 +47,9 @@
   var wEls = $$(".word", track);
   function wordsTick() {
     var r = words.getBoundingClientRect(), vh = window.innerHeight, vw = window.innerWidth;
-    var prog = Math.min(1, Math.max(0, -r.top / (r.height - vh)));
+    var wsEl = words.firstElementChild, wsTop = parseFloat(getComputedStyle(wsEl).top) || 0;
+    var wDen = Math.max(1, r.height - wsEl.offsetHeight - wsTop);
+    var prog = Math.min(1, Math.max(0, (wsTop - r.top) / wDen));
     var max = Math.max(0, track.scrollWidth - vw * .62);
     track.style.transform = "translate3d(" + (-prog * max) + "px,0,0)";
     var best = 0, bd = 1e9, focus = vw * .4;
@@ -110,8 +112,17 @@
     return '<article class="why-c lv"><div class="why-img"><img loading="lazy" src="images/' + r.img + '" alt="' + r.title + '" draggable="false"></div><h3>' + r.title + "</h3><p>" + r.text + "</p></article>";
   }).join("");
   var whs = $("#whScroll");
-  $("#whPrev").onclick = function () { whs.scrollBy({ left: -450, behavior: "smooth" }); };
-  $("#whNext").onclick = function () { whs.scrollBy({ left: 450, behavior: "smooth" }); };
+  /* arrows: jump card-by-card (a fixed pixel step gets pulled back by scroll-snap on mobile) */
+  function stepScroll(sc, dir) {
+    var cards = [].slice.call(sc.children[0] ? sc.children[0].children : sc.children);
+    if (!cards.length) return;
+    var pad = parseFloat(getComputedStyle(sc).paddingLeft) || 0, cur = sc.scrollLeft, t = null, i;
+    if (dir > 0) { for (i = 0; i < cards.length; i++) { if (cards[i].offsetLeft - pad > cur + 8) { t = cards[i]; break; } } }
+    else { for (i = cards.length - 1; i >= 0; i--) { if (cards[i].offsetLeft - pad < cur - 8) { t = cards[i]; break; } } }
+    if (t) sc.scrollTo({ left: Math.max(0, t.offsetLeft - pad), behavior: "smooth" });
+  }
+  $("#whPrev").onclick = function () { stepScroll(whs, -1); };
+  $("#whNext").onclick = function () { stepScroll(whs, 1); };
   dragScroll(whs);
 
 /* ---------- Works ---------- */
@@ -119,8 +130,8 @@
     return '<article class="wk"><img loading="lazy" src="images/' + w.img + '" alt="' + w.title + '" draggable="false"></article>';
   }).join("");
   var ws = $("#wkScroll");
-  $("#wkPrev").onclick = function () { ws.scrollBy({ left: -368, behavior: "smooth" }); };
-  $("#wkNext").onclick = function () { ws.scrollBy({ left: 368, behavior: "smooth" }); };
+  $("#wkPrev").onclick = function () { stepScroll(ws, -1); };
+  $("#wkNext").onclick = function () { stepScroll(ws, 1); };
   dragScroll(ws);
 
 /* ---------- Reviews ---------- */

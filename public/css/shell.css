@@ -173,3 +173,4 @@
 .gz-shell .hdr .logo{flex:0 1 auto;display:inline}
 @media(max-width:600px){.gz-shell .hdr .logo{flex:none}}
 .gz-shell button.ic-btn svg,.gz-shell button.ic-btn svg *{color:var(--head)!important;stroke:currentColor!important}
+@media(max-width:900px){.gz-shell .news .row{flex-direction:column;gap:12px}.gz-shell .news input{flex:none;width:100%;height:60px;font-size:1rem;padding:0 24px}.gz-shell .news .btn{flex:none;width:100%;height:56px;justify-content:center}}
