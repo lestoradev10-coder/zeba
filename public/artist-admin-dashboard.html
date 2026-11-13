@@ -141,7 +141,7 @@
         .table-scroll::-webkit-scrollbar-track { background: #e8e1f0; border-radius: 10px; }
         .table-scroll::-webkit-scrollbar-thumb { background: linear-gradient(135deg,#6a1b9a,#4a148c); border-radius: 10px; border: 2px solid #e8e1f0; }
         .table-scroll::-webkit-scrollbar-thumb:hover { background: #3a0f70; }
-        table { width: 100%; border-collapse: collapse; min-width: 980px; }
+        table { width: 100%; border-collapse: collapse; min-width: 1180px; }
         thead th {
             text-align: left; font-size: 11.5px; text-transform: uppercase; letter-spacing: .4px;
             font-weight: 700; color: #6a1b9a; background: #faf8fc; padding: 14px 16px; border-bottom: 2px solid #ece2f5;
@@ -149,6 +149,8 @@
         }
         tbody td { padding: 13px 16px; font-size: 13.5px; border-bottom: 1px solid #f3f0f6; vertical-align: middle; }
         tbody tr:hover { background: #fbf9fd; }
+        /* Keep email, phone and location on one line so no single letter drops to the next line */
+        td.col-nowrap { white-space: nowrap; }
         .artist-name-cell { display: flex; align-items: center; gap: 10px; }
         .avatar {
             width: 36px; height: 36px; border-radius: 50%; object-fit: cover;
@@ -635,9 +637,9 @@
                 return `
                 <tr>
                     <td><div class="name-main">${escapeHtml(a.name || '-')}</div></td>
-                    <td>${escapeHtml(a.email || '-')}</td>
-                    <td>${escapeHtml(a.phone || '-')}</td>
-                    <td>${escapeHtml(a.location || '-')}</td>
+                    <td class="col-nowrap">${escapeHtml(a.email || '-')}</td>
+                    <td class="col-nowrap">${escapeHtml(a.phone || '-')}</td>
+                    <td class="col-nowrap">${escapeHtml(a.location || '-')}</td>
                     <td>${specialities}</td>
                     <td>${doc}</td>
                     <td><span class="badge badge-${s.key}">${s.label}</span>${ratingInline}</td>
