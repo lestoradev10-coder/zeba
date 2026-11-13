@@ -6003,7 +6003,7 @@ select.form-input {
 .mobile-sidebar::-webkit-scrollbar-thumb {
     background: #d4af37;
     border-radius: 10px;
-}</STYLE><link rel="stylesheet" href="css/style.css?v=27"><link rel="stylesheet" href="css/inner.css?v=15"><link rel="stylesheet" href="css/dash.css?v=15"><link rel="stylesheet" href="css/dash-unified.css?v=1"><link rel="stylesheet" href="css/glamai.css?v=13"></head>
+}</STYLE><link rel="stylesheet" href="css/style.css?v=27"><link rel="stylesheet" href="css/inner.css?v=15"><link rel="stylesheet" href="css/dash.css?v=15"><link rel="stylesheet" href="css/dash-unified.css?v=4"><link rel="stylesheet" href="css/glamai.css?v=13"></head>
 <body data-page="dash" data-footer="show"><!-- ===== TOP BAR ===== -->
 <div class="topbar">
      Glam by Zebaish — Where Beauty Meets Excellence 
@@ -6829,6 +6829,7 @@ function renderDashboardUpcoming(upcoming) {
     if (!widget) return;
 
     if (!upcoming || upcoming.length === 0) {
+        widget.className = 'empty-state';
         widget.innerHTML = `
             <i class="fa-regular fa-calendar" style="font-size: 2rem;"></i>
             <h4 style="color: #888; font-size: 0.85rem;">No upcoming bookings</h4>
@@ -6837,20 +6838,26 @@ function renderDashboardUpcoming(upcoming) {
         return;
     }
 
-    let html = '';
-    upcoming.slice(0, 3).forEach(order => {
-        const date = order.date ? new Date(order.date).toLocaleDateString() : 'N/A';
-        html += `
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee;">
-                <div>
-                    <p style="margin: 0; font-size: 0.85rem; font-weight: 600; color: #1f2937;">${order.package?.name || 'Booking'} — #${order.orderNumber}</p>
-                    <p style="margin: 0; font-size: 0.75rem; color: #6b7280;">${date} ${order.time ? '· ' + order.time : ''}${order.location ? ' · ' + order.location : ''}</p>
+    widget.className = 'recent-list';
+    widget.removeAttribute('style');
+    widget.innerHTML = upcoming.slice(0, 3).map(order => {
+        const d = order.date ? new Date(order.date) : null;
+        const ok = d && !isNaN(d);
+        const day = ok ? d.getDate() : '—';
+        const mon = ok ? d.toLocaleDateString('en-GB', { month: 'short', year: 'numeric' }) : '';
+        const status = String(order.status || '');
+        const label = status.charAt(0) + status.slice(1).toLowerCase();
+        const meta = [order.time, order.location].filter(Boolean).join(' · ');
+        return `
+            <div class="recent-row">
+                <div class="recent-date"><b>${day}</b><span>${mon}</span></div>
+                <div class="recent-main">
+                    <p class="recent-title">${order.package?.name || 'Booking'} <span class="recent-id">#${order.orderNumber}</span></p>
+                    <p class="recent-meta">${meta}</p>
                 </div>
-                <span style="font-size: 0.7rem; padding: 4px 10px; border-radius: 999px; background: #eff6ff; color: #1d4ed8; font-weight: 600;">${order.status}</span>
-            </div>
-        `;
-    });
-    widget.innerHTML = html;
+                <span class="recent-status s-${status.toLowerCase()}">${label}</span>
+            </div>`;
+    }).join('');
 }
 
 // Kept in memory so the Rate & Review modal can look an order back up by
@@ -8411,26 +8418,7 @@ body {
                 <p class="welcome-text">
                     Welcome to your dashboard, <span class="highlight-name" id="dashboardUserName">Customer</span>! Here you can manage your bookings, orders, and account settings.
                 </p>
-                
-                <div class="quick-actions">
-                    <a href="/book-now" class="quick-action">
-                        <i class="fa-regular fa-calendar-plus"></i>
-                        <span>Book Now</span>
-                    </a>
-                    <a href="#" onclick="switchSection('orders')" class="quick-action">
-                        <i class="fa-regular fa-clock"></i>
-                        <span>My Orders</span>
-                    </a>
-                    <a href="#" onclick="switchSection('profile')" class="quick-action">
-                        <i class="fa-regular fa-user"></i>
-                        <span>Profile</span>
-                    </a>
-                    <a href="#" onclick="switchSection('affiliate')" class="quick-action">
-                        <i class="fa-solid fa-gift"></i>
-                        <span>Affiliate</span>
-                    </a>
-                </div>
-                
+
                 <div id="dashboardUpcomingWidget" class="empty-state" style="padding: 20px 16px; background: #fafbfc; border-radius: 10px;">
                     <i class="fa-regular fa-calendar" style="font-size: 2rem;"></i>
                     <h4 style="color: #888; font-size: 0.85rem;">No upcoming bookings</h4>

@@ -754,7 +754,7 @@ button[type="submit"]:hover, button.glam-pkg-addcart:hover, .glam-checkout-btn:h
 .signature-glam-slider-title { white-space:nowrap; }
 @media(max-width:600px){.signature-glam-slider-title{font-size:clamp(1.7rem,8vw,2.5rem);white-space:normal;}.capsule-login-btn{height:50px !important;}}
 </style>
-<link rel="stylesheet" href="css/style.css?v=27"><link rel="stylesheet" href="css/inner.css?v=15"><link rel="stylesheet" href="css/dash.css?v=15"><link rel="stylesheet" href="css/dash-unified.css?v=1"><link rel="stylesheet" href="css/glamai.css?v=13"></head>
+<link rel="stylesheet" href="css/style.css?v=27"><link rel="stylesheet" href="css/inner.css?v=15"><link rel="stylesheet" href="css/dash.css?v=15"><link rel="stylesheet" href="css/dash-unified.css?v=4"><link rel="stylesheet" href="css/glamai.css?v=13"></head>
 <body data-page="dash" data-footer="show">
 
 <!-- ===== TOP BAR ===== -->
@@ -907,21 +907,6 @@ button[type="submit"]:hover, button.glam-pkg-addcart:hover, .glam-checkout-btn:h
                 <p class="welcome-text">
                     Welcome back, <strong id="dashboardArtistName">Artist</strong>! Here's a quick look at how your bookings are going.
                 </p>
-
-                <div class="quick-actions">
-                    <a href="#" onclick="switchSection('bookings')" class="quick-action">
-                        <i class="fa-regular fa-calendar-check"></i>
-                        <span>View Bookings</span>
-                    </a>
-                    <a href="#" onclick="switchSection('profile')" class="quick-action">
-                        <i class="fa-regular fa-user"></i>
-                        <span>Edit Profile</span>
-                    </a>
-                    <a href="#" onclick="switchSection('earnings')" class="quick-action">
-                        <i class="fa-solid fa-sack-dollar"></i>
-                        <span>Earnings</span>
-                    </a>
-                </div>
 
                 <div id="dashboardRecentWrap">
                     <div class="empty-state" style="padding: 20px 16px; background: #fafbfc; border-radius: 10px;">
@@ -1415,18 +1400,27 @@ function renderDashboardPending() {
 
     if (!pending.length) return; // keep default empty state
 
-    const items = pending.map(b => `
-        <div style="display:flex; align-items:center; justify-content:space-between; padding:10px 14px; background:#fff; border-radius:10px; border:1px solid #e5e7eb; margin-bottom:8px;">
-            <div>
-                <div style="font-weight:700; color:#1f2937; font-size:0.82rem;">#${b.orderNumber || b.id} · ${b.customerName || 'Customer'}</div>
-                <div style="font-size:0.72rem; color:#6b7280;">${b.packageName || b.package || ''} · ${formatDate(b.date)} ${b.time || ''}</div>
+    const items = pending.map(b => {
+        const d = b.date ? new Date(b.date) : null;
+        const ok = d && !isNaN(d);
+        const day = ok ? d.getDate() : '—';
+        const mon = ok ? d.toLocaleDateString('en-GB', { month: 'short', year: 'numeric' }) : '';
+        const meta = [b.packageName || b.package || '', b.time || ''].filter(Boolean).join(' · ');
+        return `
+        <div class="recent-row">
+            <div class="recent-date"><b>${day}</b><span>${mon}</span></div>
+            <div class="recent-main">
+                <p class="recent-title">${b.customerName || 'Customer'} <span class="recent-id">#${b.orderNumber || b.id}</span></p>
+                <p class="recent-meta">${meta}</p>
             </div>
             <div class="action-btns">
                 <button class="btn-accept" onclick="acceptBooking('${b.id}')"><i class="fa-solid fa-check"></i></button>
                 <button class="btn-reject" onclick="rejectBooking('${b.id}')"><i class="fa-solid fa-xmark"></i></button>
             </div>
-        </div>`).join('');
+        </div>`;
+    }).join('');
 
+    wrap.className = 'recent-list';
     wrap.innerHTML = items;
 }
 

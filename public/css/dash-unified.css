@@ -4,7 +4,8 @@
    sidebar, content, order cards) into ONE continuous account sheet:
    greeting band -> stats strip -> sidebar | content, joined by hairlines. */
 
-html:has(body[data-page=dash]),html body[data-page=dash]{background:var(--surface)!important}
+/* ---------- white page; colours/fonts come from the site theme tokens (style.css) ---------- */
+html,html body[data-page=dash]{background:#fff!important}
 
 /* ---------- title sits quietly above the sheet ---------- */
 html body[data-page=dash] .dashboard-title{margin-bottom:20px!important}
@@ -15,7 +16,7 @@ html body[data-page=dash] .user-greeting{
   border:1px solid var(--line)!important;border-bottom:0!important;
   border-radius:32px 32px 0 0!important;
   padding:26px clamp(20px,3.2vw,40px)!important;
-  background:linear-gradient(115deg,#fff 0%,var(--lav) 55%,#f9e9f0 100%)!important;
+  background:linear-gradient(115deg,#fff 0%,var(--lav) 100%)!important;
 }
 
 /* ---------- 2. stats = one strip, hairline dividers, no cards ---------- */
@@ -34,7 +35,6 @@ html body[data-page=dash] .stat-card{
 }
 html body[data-page=dash] .stat-card + .stat-card{border-left:1px solid var(--line)!important}
 html body[data-page=dash] .stat-card:hover{transform:none!important;box-shadow:none!important;background:var(--surface)!important}
-html body[data-page=dash] .stat-card::before{margin-bottom:12px}
 
 /* ---------- 3. sidebar | content = one panel, one divider ---------- */
 html body[data-page=dash] .dashboard-wrapper{
@@ -44,7 +44,7 @@ html body[data-page=dash] .dashboard-wrapper{
   border:1px solid var(--line)!important;
   border-radius:0 0 32px 32px!important;
   /* tinted left column that runs the full height, 1px divider, white content */
-  background:linear-gradient(90deg,var(--surface) 0,var(--surface) 259px,var(--line) 259px,var(--line) 260px,#fff 260px)!important;
+  background:linear-gradient(90deg,#fff 0,#fff 259px,var(--line) 259px,var(--line) 260px,#fff 260px)!important;
 }
 html body[data-page=dash] .dashboard-sidebar{
   position:sticky;top:24px;
@@ -65,16 +65,6 @@ html body[data-page=dash] .dashboard-content{
 
 /* ---------- 4. inside the content: rows and lines, not boxes ---------- */
 html body[data-page=dash] .section-header{padding-bottom:16px!important;border-bottom:1px solid var(--line)!important;margin-bottom:8px!important}
-
-/* quick actions -> simple pills */
-html body[data-page=dash] .quick-actions{display:flex!important;flex-wrap:wrap;gap:10px!important;margin-bottom:28px!important}
-html body[data-page=dash] .quick-action{
-  flex-direction:row!important;gap:10px!important;padding:11px 20px!important;
-  border:0!important;border-radius:99px!important;background:var(--lav)!important;
-  font-size:.9rem;
-}
-html body[data-page=dash] .quick-action i{font-size:1rem!important}
-html body[data-page=dash] .quick-action:hover{background:var(--lav2)!important;transform:none!important}
 
 /* order / booking cards -> divided rows */
 html body[data-page=dash] .orders-list{gap:0!important}
@@ -101,6 +91,35 @@ html body[data-page=dash] .notification-item.unread{background:transparent!impor
 /* empty states -> calm tinted area, no dashed box */
 html body[data-page=dash] .empty-state{border:0!important;border-radius:24px!important;background:var(--surface)!important}
 
+/* ---------- recent bookings rows (overview) — both dashboards ---------- */
+html body[data-page=dash] .recent-list{display:block;margin:6px 0 0;padding:0;background:transparent!important;border:0!important;border-radius:0!important}
+html body[data-page=dash] .recent-row{
+  display:flex;align-items:center;gap:20px;
+  padding:20px 0;border-bottom:1px solid var(--line);
+}
+html body[data-page=dash] .recent-row:last-child{border-bottom:0}
+html body[data-page=dash] .recent-date{
+  flex:none;width:68px;text-align:center;padding:10px 0;
+  border:1px solid var(--line);border-radius:12px;background:#fff;
+}
+html body[data-page=dash] .recent-date b{display:block;font-family:var(--display)!important;font-weight:500;font-size:1.6rem;line-height:1;color:var(--head);letter-spacing:-.03em}
+html body[data-page=dash] .recent-date span{display:block;margin-top:5px;font-size:.7rem;color:var(--muted);line-height:1.2}
+html body[data-page=dash] .recent-main{flex:1;min-width:0}
+html body[data-page=dash] .recent-title{margin:0;font-family:var(--display)!important;font-weight:500;font-size:1.12rem;line-height:1.25;color:var(--head);letter-spacing:-.02em}
+html body[data-page=dash] .recent-id{font-family:var(--sans)!important;font-size:.82rem;font-weight:500;color:var(--muted);letter-spacing:0;margin-left:6px}
+html body[data-page=dash] .recent-meta{margin:5px 0 0;font-size:.88rem;line-height:1.45;color:var(--muted)}
+html body[data-page=dash] .recent-status{
+  flex:none;display:inline-flex;align-items:center;gap:8px;
+  font-size:.82rem;font-weight:600;color:var(--head);
+}
+html body[data-page=dash] .recent-status::before{content:"";width:8px;height:8px;border-radius:50%;background:#9ca3af}
+html body[data-page=dash] .recent-status.s-pending::before{background:#d97706}
+html body[data-page=dash] .recent-status.s-assigned::before,html body[data-page=dash] .recent-status.s-accepted::before{background:var(--head)}
+html body[data-page=dash] .recent-status.s-completed::before{background:#16a34a}
+html body[data-page=dash] .recent-row .action-btns{flex:none;display:flex;gap:8px}
+html body[data-page=dash] .recent-row .action-btns button{width:38px;height:38px;min-height:0!important;padding:0!important;border-radius:10px!important;display:inline-flex!important;align-items:center;justify-content:center;line-height:1}
+html body[data-page=dash] .recent-row .action-btns button i{margin:0!important;display:block;font-size:.9rem}
+
 /* ---------- responsive ---------- */
 @media(max-width:1000px){
   html body[data-page=dash] .stats-grid{grid-auto-flow:row;grid-auto-columns:auto;grid-template-columns:repeat(2,1fr)!important}
@@ -113,7 +132,7 @@ html body[data-page=dash] .empty-state{border:0!important;border-radius:24px!imp
   html body[data-page=dash] .dashboard-wrapper{grid-template-columns:1fr!important;background:#fff!important}
   html body[data-page=dash] .dashboard-sidebar{
     position:static;display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;gap:6px;
-    padding:12px 14px!important;background:var(--surface)!important;
+    padding:12px 14px!important;background:#fff!important;
     border-bottom:1px solid var(--line)!important;scrollbar-width:none;
   }
   html body[data-page=dash] .dashboard-sidebar::-webkit-scrollbar{display:none}
@@ -123,6 +142,10 @@ html body[data-page=dash] .empty-state{border:0!important;border-radius:24px!imp
   html body[data-page=dash] .dashboard-content{min-height:360px}
 }
 @media(max-width:520px){
+  html body[data-page=dash] .recent-row{gap:14px;flex-wrap:wrap}
+  html body[data-page=dash] .recent-date{width:58px}
+  html body[data-page=dash] .recent-status{margin-left:72px}
+  html body[data-page=dash] .recent-row .action-btns{margin-left:72px}
   html body[data-page=dash] .user-greeting{border-radius:26px 26px 0 0!important}
   html body[data-page=dash] .dashboard-wrapper{border-radius:0 0 26px 26px!important}
   html body[data-page=dash] .stat-card{padding:16px!important}
