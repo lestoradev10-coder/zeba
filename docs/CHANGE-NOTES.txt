@@ -42,3 +42,4 @@ V14 - SECTION 3c: REDESIGN OF LOGIN, ARTICLES, BOOKING, DASHBOARDS (checkout.htm
   dashboard.html, artist-dashboard.html: css/dash.css rewritten (greeting card, stat cards, pill sidebar, order cards, tables, forms, modals). Markup/JS untouched apart from a breadcrumb.
   admin-login.html, admin-dashboard.html, artist-admin-login.html, artist-admin-dashboard.html: css/admin-theme.css (palette, pill buttons, rounded cards, lavender login card). Logic untouched.
   Version strings bumped to ?v=14 for every file that changed.
+V28 - checkout uses shared header/footer (css/shell.css, scoped via data-shell=scoped in js/app.js); cart badge shows 0; heading font unified to Funnel Display on auth/dashboard/admin/checkout; checkout page bg white.

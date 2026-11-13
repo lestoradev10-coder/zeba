@@ -19,3 +19,9 @@ html body :is(h1,h2,h3,h4,h5,h6){font-family:var(--display)!important;letter-spa
 .wa-float svg{width:28px;height:28px}
 .wa-float:hover{transform:scale(1.08);box-shadow:0 16px 34px -8px rgba(37,211,102,.8),0 4px 10px rgba(0,0,0,.14)}
 @media(max-width:900px){.wa-float{right:19px;bottom:88px;width:48px;height:48px}.wa-float svg{width:26px;height:26px}}
+
+/* ---- v28: checkout uses the shared header/footer; page background white; home-page typography ---- */
+html,html body{background:#fff!important}
+html body :is(h1,h2,h3,h4,h5,h6):not(i):not([class*="fa-"]):not(.fa):not(svg):not(svg *){font-family:var(--display)!important;font-weight:500!important;letter-spacing:-.03em!important}
+html body{color:#2b1a38;-webkit-font-smoothing:antialiased}
+section[style*="min-height: 100vh"]{background:#fff!important}

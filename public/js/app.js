@@ -86,7 +86,7 @@
   /* ---------- toast ---------- */
   var toastEl;
   window.toast = function (msg) {
-    if (!toastEl) { toastEl = document.createElement("div"); toastEl.className = "toast"; toastEl.setAttribute("role", "status"); document.body.appendChild(toastEl); }
+    if (!toastEl) { toastEl = document.createElement("div"); toastEl.className = "toast"; toastEl.setAttribute("role", "status"); (document.querySelector(".gz-shell") || document.body).appendChild(toastEl); }
     toastEl.innerHTML = ic("check") + msg; toastEl.classList.add("show");
     clearTimeout(toastEl._t); toastEl._t = setTimeout(function () { toastEl.classList.remove("show"); }, 2200);
   };
@@ -122,7 +122,7 @@
       '<div class="hdr-r"><button class="search-pill" data-act="search" aria-label="Search">' + ic("search") + "<span>Search</span><kbd>⌘K</kbd></button>" +
       '<button class="ic-btn sbtn" data-act="search" aria-label="Search">' + ic("search") + "</button>" +
       '<div class="pop-wrap"><button class="ic-btn" data-act="acct" aria-label="Account" aria-expanded="false">' + ic("user") + '<span class="dot" hidden></span>' + ic("chev") + '</button><div class="pop" id="acctPop" role="menu"></div></div>' +
-      '<button class="ic-btn" data-act="cart" aria-label="Open cart">' + ic("cart") + '<span class="badge" id="cartBadge" data-n="0"></span></button>' +
+      '<button class="ic-btn" data-act="cart" aria-label="Open cart">' + ic("cart") + '<span class="badge" id="cartBadge" data-n="0">0</span></button>' +
       "</div></div></header>";
   }
   function footerHTML() {
@@ -155,11 +155,13 @@
 
   var mount = document.createElement("div");
   var minimal = document.body.dataset.header === "min";
-  if (!minimal) document.body.insertAdjacentHTML("afterbegin", headerHTML());
+  var scoped = document.body.dataset.shell === "scoped"; /* pages with their own design (checkout): shell styles are scoped to .gz-shell */
+  var W = function (h) { return scoped ? '<div class="gz-shell">' + h + "</div>" : h; };
+  if (!minimal) document.body.insertAdjacentHTML("afterbegin", W(headerHTML()));
   var main = document.querySelector("main");
   if (main && !main.id) main.id = "main";
-  if (!minimal && document.body.dataset.footer !== "none") document.body.insertAdjacentHTML("beforeend", footerHTML());
-  document.body.insertAdjacentHTML("beforeend", overlaysHTML());
+  if (!minimal && document.body.dataset.footer !== "none") document.body.insertAdjacentHTML("beforeend", W(footerHTML()));
+  document.body.insertAdjacentHTML("beforeend", W(overlaysHTML()));
 
   /* ---------- open / close ---------- */
   var scrim = $("#scrim");
@@ -225,7 +227,7 @@
 
   /* ---------- sync UI ---------- */
   function sync() {
-    var b = $("#cartBadge"); if (b) { var n = Cart.list().length; b.textContent = n || ""; b.dataset.n = n; }
+    var b = $("#cartBadge"); if (b) { var n = Cart.list().length; b.textContent = n; b.dataset.n = n; }
     $$("[data-fav]").forEach(function (el) { el.classList.toggle("on", Fav.has(el.dataset.fav)); });
     $$("[data-add-state]").forEach(function (el) { el.textContent = Cart.has(el.dataset.addState) ? "In your cart ✓" : "Add to cart"; });
     renderAcct(); renderDrawers();

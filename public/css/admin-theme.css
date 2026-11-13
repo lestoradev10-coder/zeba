@@ -2,7 +2,7 @@
 :root{--sans:"Funnel Sans","Funnel Sans Fallback",Arial,sans-serif;--display:"Funnel Display","Funnel Display Fallback",Arial,sans-serif;
  --head:#3d1157;--btn:#4a1766;--btn-hover:#5e2380;--lav:#eee7f4;--surface:#f7f3fb;--line:#e8dff0;--gold:#c99a31;--gold-soft:#f5e6c8;--ink:#2b1a38;--muted:#6e6279}
 html body,html body *:not(i):not([class*="fa-"]):not(.fa):not(svg):not(svg *){font-family:var(--sans)!important}
-html body :is(h1,h2,h3,h4){font-family:var(--display)!important;letter-spacing:-.02em;color:var(--head)}
+html body :is(h1,h2,h3,h4,h5,h6):not(i):not([class*="fa-"]):not(.fa):not(svg):not(svg *){font-family:var(--display)!important;font-weight:500;letter-spacing:-.03em;color:var(--head)}
 html body{background:#fbf8fd!important;color:var(--ink)}
 html body.bg-gray-50{background:#fbf8fd!important}
 

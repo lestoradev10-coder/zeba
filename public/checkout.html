@@ -1,6 +1,6 @@
 <!DOCTYPE html><!-- This site was created in Webflow. https://webflow.com --><!-- Last Published: Tue May 06 2025 08:53:15 GMT+0000 (Coordinated Universal Time) -->
 <html data-wf-domain="bavia-template.webflow.io" data-wf-page="673c1b266c89758068805929" data-wf-site="673c1b266c8975806880591c" lang="en">
-<head>
+<head><meta charset="utf-8"><meta charset="utf-8">
 <!-- ======================================== CHATBOT WIDGET STYLES (added for parity with home page) ======================================== -->
 <style>
 .chatbot-menu {
@@ -4556,301 +4556,7 @@ section[style*="min-height: 100vh"] > div {
 .mobile-sidebar::-webkit-scrollbar-thumb {
     background: #d4af37;
     border-radius: 10px;
-}</STYLE><link rel="stylesheet" href="css/zeba-bridge.css?v=13"><link rel="stylesheet" href="css/glamai.css?v=13"></HEAD><BODY><!-- ===== TOP BAR ===== -->
-<div class="topbar">
-    ✨ Glam by Zebaish — Where Beauty Meets Excellence ✨
-</div>
-
-<!-- ===== HEADER ===== -->
-<header class="header">
-    <div class="header-container">
-
-        <!-- Logo -->
-        <a href="/" class="logo">
-            <img src="logo.png" alt="Glam by Zebaish">
-        </a>
-
-        <!-- Desktop Navigation -->
-        <nav class="nav-menu" id="navMenu">
-            <a href="/" class="active">HOME</a>
-            <a href="/about">ABOUT US</a>
-            <a href="/#why">WHY CHOOSE US</a>
-            <a href="/packages">PACKAGES</a>
-            <a href="/blog">BLOG</a>
-            <a href="/#faq">FAQ</a>
-            <a href="/contact">CONTACT US</a>
-        </nav>
-
-        <!-- Hamburger -->
-        <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-
-        <!-- Desktop Login with Dropdown -->
-        <div class="login-wrapper" id="desktopLoginWrapper">
-            <div class="login-btn" id="loginBtn">
-                <div class="login-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                        <circle cx="12" cy="8" r="4"/>
-                        <path d="M4 20c0-3.5 3.6-6 8-6s8 2.5 8 6" stroke-linecap="round"/>
-                    </svg>
-                </div>
-                <div id="loginText">
-                    <span>Log in /</span>
-                    <small>Register</small>
-                </div>
-                <span class="dropdown-arrow">▼</span>
-            </div>
-            <div class="login-dropdown" id="loginDropdown">
-                <div class="dropdown-greeting" id="greetingText">👋 Hi, Guest!</div>
-                <a href="/login" class="dropdown-role-link"><i class="fa-regular fa-user"></i> Customer Login</a>
-                <a href="/artist-login" class="dropdown-role-link"><i class="fa-solid fa-wand-magic-sparkles"></i> Makeup Artist Login</a>
-                <a href="#" id="dashboardLink" class="account-only-link" onclick="navigateToDashboard(event, '')">Dashboard</a>
-                <a href="#" id="accountSettingsLink" class="account-only-link" onclick="navigateToDashboard(event, 'profile')">Account Settings</a>
-                <a href="#" id="ordersLink" class="account-only-link" onclick="navigateToDashboard(event, 'orders')">Orders</a>
-                <a href="#" id="logoutLink" class="account-only-link" onclick="handleLogout(event)">Logout</a>
-            </div>
-        </div>
-
-    </div>
-</header>
-
-<!-- ===== MOBILE SIDEBAR ===== -->
-<div class="mobile-sidebar" id="mobileSidebar">
-    <div class="mobile-close" id="mobileClose">
-        <i class="fas fa-times"></i>
-    </div>
-
-    <div class="mobile-logo">
-        <img src="logo.png" alt="Glam by Zebaish">
-        <div class="tagline">Where Beauty Meets Excellence</div>
-    </div>
-
-    <nav class="mobile-nav-links">
-        <a href="/" class="active">
-            <i class="fas fa-home"></i> Home
-        </a>
-        <a href="/about">
-            <i class="fas fa-users"></i> About Us
-        </a>
-        <a href="/#why">
-            <i class="fas fa-star"></i> Why Choose Us
-        </a>
-        <a href="/packages">
-            <i class="fas fa-box"></i> Packages
-        </a>
-        <a href="/blog">
-            <i class="fas fa-blog"></i> Blog
-        </a>
-        <a href="/#faq">
-            <i class="fas fa-question-circle"></i> FAQ
-        </a>
-        <a href="/contact">
-            <i class="fas fa-envelope"></i> Contact Us
-        </a>
-    </nav>
-
-    <!-- Mobile Auth Section -->
-    <div class="mobile-auth-section">
-        <div class="auth-btn" id="mobileAuthBtn" onclick="handleMobileAuth()">
-            <div class="avatar" id="mobileAvatar">👤</div>
-            <div class="auth-text">
-                <span class="name" id="mobileUserName">Guest</span>
-                <span class="sub" id="mobileUserSub">Login / Register</span>
-            </div>
-            <i class="fas fa-chevron-right" style="margin-left: auto; color: rgba(255,255,255,0.2);"></i>
-        </div>
-            <div class="mobile-auth-guest-links" id="mobileAuthGuestLinks">
-                <a href="/login" class="mobile-role-link"><i class="fa-regular fa-user"></i> <span>Customer Login</span></a>
-                <a href="/artist-login" class="mobile-role-link"><i class="fa-solid fa-wand-magic-sparkles"></i> <span>Makeup Artist Login</span></a>
-            </div>
-    </div>
-
-    <div class="mobile-sidebar-footer">
-        <p>© 2026 Glam by Zebaish</p>
-    </div>
-</div>
-
-<!-- Overlay -->
-<div class="menu-overlay" id="menuOverlay"></div><SCRIPT>// ========================================
-// HAMBURGER MENU TOGGLE
-// ========================================
-const hamburger = document.getElementById('hamburger');
-const mobileSidebar = document.getElementById('mobileSidebar');
-const menuOverlay = document.getElementById('menuOverlay');
-const mobileClose = document.getElementById('mobileClose');
-
-function openMobileMenu() {
-    hamburger.classList.add('active');
-    mobileSidebar.classList.add('active');
-    menuOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeMobileMenu() {
-    hamburger.classList.remove('active');
-    mobileSidebar.classList.remove('active');
-    menuOverlay.classList.remove('active');
-    document.body.style.overflow = '';
-}
-
-hamburger.addEventListener('click', openMobileMenu);
-mobileClose.addEventListener('click', closeMobileMenu);
-menuOverlay.addEventListener('click', closeMobileMenu);
-
-// Close mobile menu on link click
-document.querySelectorAll('.mobile-nav-links a').forEach(link => {
-    link.addEventListener('click', closeMobileMenu);
-});
-
-// ========================================
-// AUTH / LOGIN LOGIC
-// ========================================
-
-function getUser() {
-    const userData = localStorage.getItem('user');
-    return userData ? JSON.parse(userData) : null;
-}
-
-function getInitials(name) {
-    if (!name) return '👤';
-    const parts = name.trim().split(' ');
-    if (parts.length === 1) return parts[0].charAt(0).toUpperCase();
-    return (parts[0].charAt(0) + parts[parts.length - 1].charAt(0)).toUpperCase();
-}
-
-function navigateToDashboard(event, section) {
-    event.preventDefault();
-    event.stopPropagation();
-
-    const user = getUser();
-    if (!user) {
-        window.location.href = '/login';
-        return;
-    }
-
-    let url = '/dashboard';
-    if (section) {
-        url += '#' + section;
-    }
-    window.location.href = url;
-}
-
-function handleLogout(e) {
-    if (e) e.preventDefault();
-    if (confirm('Are you sure you want to logout?')) {
-        localStorage.removeItem('user');
-        localStorage.removeItem('userToken');
-        localStorage.removeItem('rememberedEmail');
-        updateAuthUI();
-        window.location.reload();
-    }
-}
-
-function handleMobileAuth() {
-    const user = getUser();
-    if (user) {
-        window.location.href = '/dashboard';
-    } else {
-        window.location.href = '/login';
-    }
-}
-
-// ===== UPDATE UI =====
-function updateAuthUI() {
-    const user = getUser();
-
-    // Desktop Login Button
-    const loginText = document.getElementById('loginText');
-    const greetingText = document.getElementById('greetingText');
-    const dashboardLink = document.getElementById('dashboardLink');
-    const accountSettingsLink = document.getElementById('accountSettingsLink');
-    const ordersLink = document.getElementById('ordersLink');
-    const logoutLink = document.getElementById('logoutLink');
-    const desktopLoginWrapper = document.getElementById('desktopLoginWrapper');
-    const loginBtn = document.getElementById('loginBtn');
-
-    // Mobile Auth
-    const mobileUserName = document.getElementById('mobileUserName');
-    const mobileUserSub = document.getElementById('mobileUserSub');
-    const mobileAvatar = document.getElementById('mobileAvatar');
-
-
-    const mobileAuthBtn = document.getElementById('mobileAuthBtn');
-
-    const mobileAuthGuestLinks = document.getElementById('mobileAuthGuestLinks');
-    if (user) {
-        const firstName = user.name ? user.name.split(' ')[0] : 'User';
-
-        // Desktop
-        loginText.innerHTML = `
-            <span style="color: #2d1243; font-weight: 700;">${firstName}</span>
-        `;
-        greetingText.textContent = `👋 Welcome, ${firstName}!`;
-
-        dashboardLink.href = '#';
-        dashboardLink.onclick = function(e) { navigateToDashboard(e, ''); };
-        accountSettingsLink.href = '#';
-        accountSettingsLink.onclick = function(e) { navigateToDashboard(e, 'profile'); };
-        ordersLink.href = '#';
-        ordersLink.onclick = function(e) { navigateToDashboard(e, 'orders'); };
-
-        logoutLink.style.display = 'block';
-        logoutLink.onclick = handleLogout;
-        if (desktopLoginWrapper) desktopLoginWrapper.classList.remove('guest-mode');
-
-        // Mobile
-        mobileUserName.textContent = user.name || 'User';
-        mobileUserSub.textContent = 'Dashboard';
-        mobileAvatar.textContent = getInitials(user.name);
-
-
-        if (mobileAuthBtn) mobileAuthBtn.style.display = 'flex';
-
-        if (mobileAuthGuestLinks) mobileAuthGuestLinks.style.display = 'none';
-    } else {
-        // Desktop
-        loginText.innerHTML = `
-            <span>Log in /</span>
-            <small>Register</small>
-        `;
-        greetingText.textContent = '👋 Hi, Guest!';
-
-        dashboardLink.href = '/login';
-        dashboardLink.onclick = null;
-        accountSettingsLink.href = '/login';
-        accountSettingsLink.onclick = null;
-        ordersLink.href = '/login';
-        ordersLink.onclick = null;
-
-        logoutLink.style.display = 'none';
-        logoutLink.onclick = null;
-        if (desktopLoginWrapper) desktopLoginWrapper.classList.add('guest-mode');
-
-        // Mobile
-        mobileUserName.textContent = 'Guest';
-        mobileUserSub.textContent = 'Login / Register';
-        mobileAvatar.textContent = '👤';
-
-        if (mobileAuthBtn) mobileAuthBtn.style.display = 'none';
-
-        if (mobileAuthGuestLinks) mobileAuthGuestLinks.style.display = 'flex';
-    }
-}
-
-// ===== INITIALIZE =====
-document.addEventListener('DOMContentLoaded', function() {
-    updateAuthUI();
-});
-
-// Update on storage changes
-window.addEventListener('storage', function(e) {
-    if (e.key === 'user') {
-        updateAuthUI();
-    }
-});</SCRIPT>
+}</STYLE><link rel="stylesheet" href="css/zeba-bridge.css?v=16"><link rel="stylesheet" href="css/shell.css?v=2"><link rel="stylesheet" href="css/glamai.css?v=13"></HEAD><BODY data-page="checkout" data-shell="scoped">
 
 <!-- ========================================
      PREMIUM CHECKOUT – Glam by Zebaish
@@ -5012,7 +4718,7 @@ window.addEventListener('storage', function(e) {
     </div>
 </section>
 
-<script src="packages-data.js"></script>
+<script src="js/data.js?v=28"></script>
 <script src="cart-favorites.js"></script>
 
 <!-- ======================================== -->
@@ -5532,108 +5238,7 @@ async function initiatePhonePePayment() {
     }
 }
 </script>
-  <!-- ========================================
-     FOOTER - Glam by Zebaish
-     ======================================== -->
-
-<section class="footer" style="background: linear-gradient(135deg, #1a0a1f 0%, #2a0a3a 40%, #4a1562 70%, #2a0a3a 100%); padding: 70px 20px 25px; position: relative; overflow: hidden;">
-    
-    <!-- Decorative Gold Line Top -->
-    <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, #D4AF37, #F5E6C8, #D4AF37, transparent);"></div>
-    
-    <!-- Decorative Glow Orbs -->
-    <div style="position: absolute; bottom: -100px; right: -100px; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(212, 175, 55, 0.04) 0%, transparent 70%); pointer-events: none;"></div>
-    <div style="position: absolute; top: -100px; left: -100px; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(212, 175, 55, 0.03) 0%, transparent 70%); pointer-events: none;"></div>
-    
-    <div class="w-layout-blockcontainer container w-container" style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;">
-        <div class="footer-inner">
-            
-            <!-- Footer Top -->
-            <div class="footer-top" style="display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.2fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(212, 175, 55, 0.08);">
-                
-                <!-- Brand Info -->
-                <div class="footer-left">
-                    <a href="/" class="brand w-inline-block" style="display: inline-block;">
-                        <img loading="eager" src="aa.png" alt="Glam by Zebaish" style="width: 220px; height: auto; margin-bottom: 18px;">
-                    </a>
-                    <p style="color: #d4c4d8 !important; font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px; max-width: 320px;">
-                        Professional makeup artistry at your doorstep. Empowering beauty, creating careers, building futures.
-                    </p>
-                    <!-- Social Media Links - Facebook & Instagram -->
-                    <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-                        <!-- Facebook Link Added Before Instagram -->
-                        <a href="https://www.facebook.com/people/Glam-by-Zebaish/61594240403449/" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.2); color: #D4AF37 !important; font-size: 1.2rem; text-decoration: none; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);">
-                            <i class="fa-brands fa-facebook-f"></i>
-                        </a>
-                        <a href="https://www.instagram.com/glambyzebaish?igsi=MWhrbGJhYmI1OWQxaA%3D%3D&utm_source=qr" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.2); color: #D4AF37 !important; font-size: 1.2rem; text-decoration: none; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Quick Links -->
-                <div>
-                    <div style="color: #d4c4d8 !important; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Quick Links</div>
-                    <div style="display: flex; flex-direction: column; gap: 12px;">
-                        <a href="/" class="footer-link" style="color: #D4AF37 !important; text-decoration: none; font-size: 1.05rem !important; font-weight: 600 !important; transition: all 0.3s ease; position: relative;">Home</a>
-                        <a href="/about" class="footer-link" style="color: #D4AF37 !important; text-decoration: none; font-size: 1.05rem !important; font-weight: 600 !important; transition: all 0.3s ease; position: relative;">About Us</a>
-                        <a href="/packages" class="footer-link" style="color: #D4AF37 !important; text-decoration: none; font-size: 1.05rem !important; font-weight: 600 !important; transition: all 0.3s ease; position: relative;">Packages</a>
-                        <a href="/blog" class="footer-link" style="color: #D4AF37 !important; text-decoration: none; font-size: 1.05rem !important; font-weight: 600 !important; transition: all 0.3s ease; position: relative;">Blog</a>
-                        <a href="/contact" class="footer-link" style="color: #D4AF37 !important; text-decoration: none; font-size: 1.05rem !important; font-weight: 600 !important; transition: all 0.3s ease; position: relative;">Contact</a>
-                    </div>
-                </div>
-                
-                <!-- Support -->
-                <div>
-                    <div style="color: #d4c4d8 !important; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Support</div>
-                    <div style="display: flex; flex-direction: column; gap: 12px;">
-                        <a href="/#faq" class="footer-link" style="color: #D4AF37 !important; text-decoration: none; font-size: 1.05rem !important; font-weight: 600 !important; transition: all 0.3s ease; position: relative;">FAQ</a>
-                        <a href="/#why" class="footer-link" style="color: #D4AF37 !important; text-decoration: none; font-size: 1.05rem !important; font-weight: 600 !important; transition: all 0.3s ease; position: relative;">Why Choose Us</a>
-                        <a href="/privacy-policy" class="footer-link" style="color: #D4AF37 !important; text-decoration: none; font-size: 1.05rem !important; font-weight: 600 !important; transition: all 0.3s ease; position: relative;">Privacy Policy</a>
-                        <a href="/terms" class="footer-link" style="color: #D4AF37 !important; text-decoration: none; font-size: 1.05rem !important; font-weight: 600 !important; transition: all 0.3s ease; position: relative;">Terms &amp; Conditions</a>
-                    </div>
-                </div>
-                
-                <!-- Contact -->
-                <div>
-                    <div style="color: #d4c4d8 !important; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Contact</div>
-                    <div style="display: flex; flex-direction: column; gap: 12px;">
-                        <!-- Email -->
-                        <div style="display: flex; align-items: center; gap: 10px; color: #d4c4d8 !important; font-size: 0.9rem;">
-                            <i class="fa-regular fa-envelope" style="color: #D4AF37; font-size: 0.9rem; min-width: 18px;"></i>
-                            <span style="color: #d4c4d8 !important;">hello@glambyzebaish.com</span>
-                        </div>
-                        <!-- Phone -->
-                        <div style="display: flex; align-items: center; gap: 10px; color: #d4c4d8 !important; font-size: 0.9rem;">
-                            <i class="fa-solid fa-phone" style="color: #D4AF37; font-size: 0.9rem; min-width: 18px;"></i>
-                            <span style="color: #d4c4d8 !important;">+91 9505777790</span>
-                        </div>
-                        <!-- Address -->
-                        <div style="display: flex; align-items: flex-start; gap: 10px; color: #d4c4d8 !important; font-size: 0.9rem;">
-                            <i class="fa-solid fa-location-dot" style="color: #D4AF37; font-size: 0.9rem; min-width: 18px; margin-top: 3px;"></i>
-                            <span style="color: #d4c4d8 !important; line-height: 1.6;">Hyderabad,Telangana</span>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <!-- Footer Bottom - Copyright -->
-            <div class="footer-bottom" style="padding-top: 25px; margin-top: 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
-                <div style="color: #d4c4d8 !important; font-size: 0.9rem;">
-                    © 2026 <span style="color: #D4AF37 !important; font-weight: 700;">Glam by Zebaish</span>. All rights reserved.
-                </div>
-                <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
-       
-                    <div style="color: #d4c4d8 !important; font-size: 0.85rem;">
-                        Designed &amp; Developed by <a href="https://www.lestora.com" target="_blank" style="color: #D4AF37 !important; text-decoration: none; font-weight: 700; font-size: 0.9rem; transition: all 0.3s ease;"> Lestora Technologies</a>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-</section>
+  
 
     <script src="assets/d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js" type="text/javascript"></script>
     <script src="assets/cdn.prod.website-files.com/673c1b266c8975806880591c/js/webflow.schunk.cc3fb98876623427.js" type="text/javascript"></script>
@@ -5647,22 +5252,7 @@ async function initiatePhonePePayment() {
 
 
 
-<a href="https://wa.me/919505777790?text=Hi%20Glam%20by%20Zeba%2C%20I%27d%20like%20to%20book%20a%20makeup%20service!"
-   target="_blank"
-   rel="noopener noreferrer"
-   class="whatsapp-float"
-   aria-label="Chat with Glam by Zebaish on WhatsApp">
 
-    <span class="whatsapp-tooltip">Chat with us ✨</span>
-
-    <span class="whatsapp-btn">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12.032 21.965c-1.917 0-3.771-.544-5.341-1.568l-4.442 1.461 1.475-4.316a9.976 9.976 0 0 1-1.565-5.439C2.159 6.866 6.102 2.929 10.929 2.929c2.32 0 4.498.909 6.136 2.548a8.614 8.614 0 0 1 2.548 6.136c0 4.827-3.938 8.766-8.765 8.766l-.005.001h-.811zm5.384-5.63c.186-.549.186-1.021.124-1.158-.062-.137-.217-.222-.466-.383-.248-.161-1.462-.717-1.677-.788-.215-.071-.372-.107-.529.107-.157.215-.608.788-.744.948-.137.161-.274.194-.522.032-.248-.161-1.042-.384-1.984-1.224-.734-.655-1.229-1.465-1.372-1.713-.137-.248-.015-.384.103-.507.107-.107.214-.249.322-.374.107-.124.143-.222.214-.372.071-.15.036-.276-.018-.404-.055-.129-.496-1.195-.682-1.636-.185-.433-.37-.36-.496-.369h-.435c-.139 0-.372.055-.574.262-.201.207-.769.769-.769 1.876 0 1.107.806 2.175.918 2.326.112.15 1.58 2.415 3.828 3.196.535.186.949.298 1.273.381.535.137 1.023.118 1.407.071.429-.053 1.323-.54 1.51-1.063.186-.522.186-1.107.124-1.158-.062-.05-.217-.101-.466-.262z"/>
-        </svg>
-
-        <span class="whatsapp-badge">1</span>
-    </span>
-</a>
 
 <!-- Chatbot Floating Button - Purple with White Chat Icon -->
 <div class="chatbot-float" id="chatbotFloat">
@@ -5996,14 +5586,14 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script><script>
 (function () {
-  var waBtn = document.querySelector('.whatsapp-float');
-  if (waBtn && typeof fbq === 'function') {
-    waBtn.addEventListener('click', function () {
+  document.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('.wa-float') && typeof fbq === 'function') {
       fbq('track', 'Contact', { content_name: 'WhatsApp inquiry' });
-    });
-  }
+    }
+  });
 })();
 </script>
+<script src="js/app.js?v=28"></script>
 <script src="js/glamai-engine.js?v=13" defer></script><script src="js/glamai.js?v=13" defer></script></body>
 
 </html>

@@ -1,6 +1,6 @@
 /* Glam by Zebaish — glass design for login / register / reset + book-now (v16) */
 body[data-auth] main{margin-top:-76px;background:#efe6fa url(../images/auth-bg2.webp) left bottom/cover no-repeat}
-.auth,.bk-scope{--gf-head:"Playfair Display","Cormorant Garamond",Georgia,serif;--gf-script:"Allura","Great Vibes","Brush Script MT",cursive;--gf-body:"Jost","Funnel Sans",Arial,sans-serif;--gl-bg:rgba(255,255,255,.30);--gl-line:rgba(255,255,255,.6);--fi-bg:rgba(255,255,255,.5);--fi-line:rgba(255,255,255,.75)}
+.auth,.bk-scope{--gf-head:"Funnel Display","Funnel Display Fallback",Arial,sans-serif;--gf-script:"Funnel Display","Funnel Display Fallback",Arial,sans-serif;--gf-body:"Funnel Sans","Funnel Sans Fallback",Arial,sans-serif;--gl-bg:rgba(255,255,255,.30);--gl-line:rgba(255,255,255,.6);--fi-bg:rgba(255,255,255,.5);--fi-line:rgba(255,255,255,.75)}
 
 /* ===== auth layout ===== */
 body[data-auth] .auth{display:grid;grid-template-columns:1fr;place-items:center;min-height:100svh;padding:104px var(--pad) 56px;max-width:none;margin:0;gap:24px;font-family:var(--gf-body);font-size:13px}
@@ -62,7 +62,7 @@ body[data-auth] .auth-msg{font-size:11.5px;padding:8px 11px;border-radius:10px;m
 
 /* ===== book now ===== */
 body[data-page="book"] main{font-family:"Jost","Funnel Sans",Arial,sans-serif;font-size:13px}
-body[data-page="book"] .col-h h1{font-family:"Playfair Display",Georgia,serif;font-weight:500;font-size:clamp(1.6rem,2.6vw,2.2rem);letter-spacing:0}
+body[data-page="book"] .col-h h1{font-family:"Funnel Display","Funnel Display Fallback",Arial,sans-serif;font-weight:500;font-size:clamp(1.6rem,2.6vw,2.2rem);letter-spacing:0}
 body[data-page="book"] .col-h p{font-size:13px}
 body[data-page="book"] .bk{grid-template-columns:minmax(0,1fr) 320px;gap:22px}
 body[data-page="book"] .bk-card,body[data-page="book"] .bk-box{background:rgba(255,255,255,.32);border:1px solid rgba(255,255,255,.65);border-radius:20px;-webkit-backdrop-filter:blur(18px) saturate(1.3);backdrop-filter:blur(18px) saturate(1.3);box-shadow:0 14px 44px -16px rgba(74,23,102,.3),inset 0 1px 0 rgba(255,255,255,.7)}
@@ -89,7 +89,7 @@ body[data-page="book"] #perPackageDateTimeRows .ppdt-row>div:first-child{font-si
 body[data-page="book"] #perPackageDateTimeRows label{font-size:11px!important}
 /* selection box */
 .sel-box{padding:20px!important}
-.sel-box h3{font-family:"Playfair Display",Georgia,serif;font-weight:500;font-size:1.15rem;letter-spacing:0;margin-bottom:12px}
+.sel-box h3{font-family:"Funnel Display","Funnel Display Fallback",Arial,sans-serif;font-weight:500;font-size:1.15rem;letter-spacing:0;margin-bottom:12px}
 .sel-list{display:grid;gap:8px;list-style:none;margin-bottom:12px}
 .sel-item{display:grid;grid-template-columns:42px 1fr auto;gap:9px;align-items:center;padding:6px;border-radius:12px;background:rgba(255,255,255,.45);border:1px solid rgba(255,255,255,.7)}
 .sel-item img{width:42px;height:42px;border-radius:9px;object-fit:cover;background:var(--lav)}
@@ -99,7 +99,7 @@ body[data-page="book"] #perPackageDateTimeRows label{font-size:11px!important}
 .sel-x:hover{background:rgba(255,255,255,.7)}.sel-x svg{width:13px;height:13px}
 .sel-empty{font-size:12px;color:#5d4a70;padding:8px 2px 14px}
 .sel-total{display:flex;justify-content:space-between;align-items:baseline;padding:10px 2px 12px;border-top:1px solid rgba(255,255,255,.8);font-size:12px;color:#3d1157}
-.sel-total b{font-family:"Playfair Display",Georgia,serif;font-size:1.2rem;font-weight:600}
+.sel-total b{font-family:"Funnel Display","Funnel Display Fallback",Arial,sans-serif;font-size:1.2rem;font-weight:600}
 body[data-page="book"] .sel-box .btn{height:40px;border-radius:10px;font-size:13px;font-weight:500;background:linear-gradient(135deg,#9a4fc0,#4a1766);gap:8px;letter-spacing:.03em}
 .sel-note{font-size:11px;color:#5d4a70;margin-top:10px;text-align:center}
 .sel-note a{color:#4a1766;font-weight:600;text-decoration:underline}
