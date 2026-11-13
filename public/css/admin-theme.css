@@ -70,3 +70,20 @@ html body .sidebar .nav-link:not(.active):hover{background:#fff!important;color:
 html body .sidebar .nav-link.active{box-shadow:0 6px 16px -8px rgba(74,23,102,.6)}
 html body .sidebar .nav-link .badge-count{color:#fff!important}
 html body .sidebar .nav-link.text-red-600:hover{background:#fee2e2!important;color:#b91c1c!important}
+
+/* v35: artist-admin — gap after the logo; table fits the card on desktop (no horizontal scrollbar, Actions always visible) */
+html body .topbar-title{gap:26px!important}
+html body .topbar-title img{height:44px!important;margin-right:6px}
+@media (min-width:1000px){
+  html body .table-scroll{overflow-x:hidden!important}
+  html body .table-scroll table{min-width:0!important;width:100%;table-layout:auto}
+  html body .table-scroll thead th{white-space:normal!important;padding:12px 10px!important;letter-spacing:.04em!important;font-size:.66rem!important;line-height:1.25}
+  html body .table-scroll tbody td{padding:12px 10px!important;font-size:13px!important;word-break:break-word;overflow-wrap:anywhere}
+  html body .table-scroll .row-actions{flex-wrap:wrap;gap:6px}
+  html body .table-scroll .action-btn{padding:6px 10px!important}
+  html body .table-scroll .download-btn,html body .table-scroll .badge{white-space:nowrap}
+}
+@media (max-width:999px){
+  html body .topbar-title{gap:14px!important}
+  html body .topbar-title img{height:36px!important}
+}
