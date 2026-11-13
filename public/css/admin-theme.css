@@ -87,3 +87,9 @@ html body .topbar-title img{height:44px!important;margin-right:6px}
   html body .topbar-title{gap:14px!important}
   html body .topbar-title img{height:36px!important}
 }
+
+/* v36: artist-admin — more room for the Location column (no mid-word wrapping) */
+@media (min-width:1000px){
+  html body .table-scroll table th:nth-child(4),
+  html body .table-scroll table td:nth-child(4){min-width:130px;white-space:nowrap!important;word-break:normal!important;overflow-wrap:normal!important;padding-left:14px!important;padding-right:18px!important}
+}
