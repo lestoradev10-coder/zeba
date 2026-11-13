@@ -150,3 +150,7 @@ html body[data-page=dash] .recent-row .action-btns button i{margin:0!important;d
   html body[data-page=dash] .dashboard-wrapper{border-radius:0 0 26px 26px!important}
   html body[data-page=dash] .stat-card{padding:16px!important}
 }
+
+/* Cart drawer: Tailwind's .block{display:block} (loaded on these pages) was overriding .btn's flex
+   layout, so "Checkout" and its arrow stacked and left-aligned. Keep the shared .btn look. */
+.btn.block{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:10px!important;width:100%!important;text-align:center!important}
