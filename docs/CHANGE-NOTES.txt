@@ -1,0 +1,44 @@
+Glam by Zebaish - v11 (Section 2: login, book-now, checkout)
+
+NEW (beauty design, Zeba content, Zeba backend):
+  login.html, artist-login.html, register.html, artist-register.html,
+  forgot-password.html, reset-password.html  (+ js/auth.js, css/auth.css)
+  Same API calls and localStorage keys as Zeba-main: /api/auth/login, /api/artist/login,
+  /api/auth/register, /api/auth/forgot-password, /api/auth/reset-password,
+  user / userToken / userRole / rememberedEmail, ?redirect= support (checkout -> login -> back).
+
+KEPT AS ZEBA-MAIN DESIGN (only beauty font, WhatsApp float and Glam AI added via css/zeba-bridge.css):
+  book-now.html, checkout.html, booking-confirmation.html
+  + packages-data.js, cart-favorites.js, hyderabad-areas.js, service-areas.js, assets/
+
+FLOW: Add to cart / Book now / cart-drawer Checkout -> book-now.html -> checkout.html (PhonePe/Razorpay as before).
+Account menu now opens /dashboard and /artist-dashboard (Zeba dashboards, restyled in Section 3).
+
+DEPLOY: copy this folder's contents into Zeba-main/public/ (overwrite). Pages call /api/... so they must be served by the Zeba-main Next.js app.
+Removed old demo files: account.html, js/account.js, js/login.js, js/checkout.js.
+
+SECTION 3a - BLOG (v12)
+  blog.html, hd-bridal-makeup.html, bridal-skincare-prep.html, bridal-makeup-mistakes.html (same URLs as Zeba-main)
+  js/blog-data.js (content from Zeba posts), js/blog.js, css/blog.css
+  Share options as on Zeba: Facebook, WhatsApp, Instagram. No author line. Pro-tip box uses an SVG icon.
+  Nav "Blog" and the home-page blog cards now open these pages.
+
+SECTION 3b - DASHBOARDS + REMAINING PAGES (v13)
+  dashboard.html (customer), artist-dashboard.html : Zeba logic/markup/API untouched; new header, footer, beauty font + light theme (css/dash.css)
+  admin-login.html, admin-dashboard.html, artist-admin-login.html, artist-admin-dashboard.html : same logic, beauty font (css/admin-theme.css)
+  contact.html (posts to /api/contact), privacy-policy.html, terms.html, iconic-brides.html (new beauty design, Zeba text)
+  service-detail.html : redirects old links to package.html?id=...
+  Contact / privacy / terms links in header, footer and menus now point to these pages.
+  Not copied: "login (2).html" (stray duplicate of login in Zeba-main).
+
+V14 - SECTION 3c: REDESIGN OF LOGIN, ARTICLES, BOOKING, DASHBOARDS (checkout.html, index.html, package.html NOT touched)
+  login.html, register.html, artist-login.html, artist-register.html, forgot-password.html, reset-password.html
+    : four separate customer/artist pages (no switch), one centred card on soft lavender, icon + role label, no side image. Same API calls/localStorage keys/redirects.
+  Breadcrumb: pill with home icon + chevrons on blog, articles, about, contact, privacy, terms, iconic-brides, dashboards, book-now; content width now matches the header pill (css/inner.css).
+  Articles (hd-bridal-makeup, bridal-skincare-prep, bridal-makeup-mistakes): text left, sticky right column (Share, Editor's picks, Ready to glow? card). Coloured brand share icons: Facebook, X, WhatsApp, Pinterest, LinkedIn, Instagram + copy link. Old bottom "More articles" grid removed.
+  book-now.html: rebuilt in the home-page design (header, footer, fonts, WhatsApp, Glam AI). Booking logic script reused unchanged (packages, per-package rows, saved addresses, handoff to /checkout).
+    Fix: the saved-address dropdown's onchange handler is now reachable (it was inside the script scope before).
+  booking-confirmation.html: new design, same /api/orders/<id> logic.
+  dashboard.html, artist-dashboard.html: css/dash.css rewritten (greeting card, stat cards, pill sidebar, order cards, tables, forms, modals). Markup/JS untouched apart from a breadcrumb.
+  admin-login.html, admin-dashboard.html, artist-admin-login.html, artist-admin-dashboard.html: css/admin-theme.css (palette, pill buttons, rounded cards, lavender login card). Logic untouched.
+  Version strings bumped to ?v=14 for every file that changed.

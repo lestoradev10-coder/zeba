@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1635552701268110');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1635552701268110&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Booking Confirmed — Glam by Zebaish</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css?v=26">
+<link rel="stylesheet" href="css/inner.css?v=15">
+<link rel="stylesheet" href="css/glamai.css?v=14">
+<style>
+.cf{display:grid;place-items:start center;padding:10px 0 clamp(60px,8vw,110px)}
+.cf-card{width:min(560px,100%);background:#fff;border:1px solid var(--line);border-radius:34px;padding:clamp(26px,4vw,46px);box-shadow:var(--shadow);text-align:center}
+.cf-ico{width:76px;height:76px;border-radius:50%;display:grid;place-items:center;margin:0 auto 18px;background:var(--lav);color:var(--head)}
+.cf-ico.ok{background:#eaf6ee;color:#1d6b3a}.cf-ico svg{width:34px;height:34px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.cf-card h1{font-size:clamp(1.9rem,3.4vw,2.5rem);margin-bottom:8px}
+.cf-sub{color:var(--muted);margin-bottom:20px}
+.cf-pill{display:inline-flex;padding:6px 16px;border-radius:99px;font-size:.74rem;font-weight:700;letter-spacing:.08em;margin-bottom:24px;background:var(--gold-soft);color:#7a5710}
+.cf-pill.paid{background:#eaf6ee;color:#1d6b3a}
+.cf-det{text-align:left;background:var(--surface);border-radius:24px;padding:10px 22px;margin-bottom:22px}
+.cf-row{display:flex;justify-content:space-between;gap:20px;padding:12px 0;border-bottom:1px solid var(--line);font-size:.92rem}
+.cf-row:last-child{border-bottom:0}.cf-row span:first-child{color:var(--muted)}.cf-row span:last-child{color:var(--head);font-weight:600;text-align:right}
+.cf-note{font-size:.88rem;color:var(--muted);line-height:1.65;margin-bottom:24px}.cf-note strong{color:var(--head)}
+.cf-card .btn{width:100%}.cf-card .btn+.btn{margin-top:10px}
+.cf-load{color:var(--muted);padding:40px 0}
+</style>
+</head>
+<body class="inner" data-page="confirm">
+<main>
+<div class="wrap">
+  <div class="cf"><div class="cf-card" id="card"><div class="cf-load" id="loadingMsg">Loading your booking…</div></div></div>
+</div>
+</main>
+<script src="js/data.js?v=14"></script>
+<script src="js/app.js?v=14"></script>
+<script>
+var TICK='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>';
+var HOURGLASS='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12M6 21h12M7 3c0 5 5 6 5 9s-5 4-5 9M17 3c0 5-5 6-5 9s5 4 5 9"/></svg>';
+async function loadOrder() {
+    const params = new URLSearchParams(window.location.search);
+    const orderId = params.get('order');
+    const card = document.getElementById('card');
+
+    if (!orderId) {
+        card.innerHTML = '<h1>Booking confirmation</h1><p class="cf-sub">No order reference was provided.</p><a class="btn" href="/dashboard#orders">Go to My Orders</a>';
+        return;
+    }
+
+    const token = localStorage.getItem('userToken');
+    if (!token) {
+        window.location.href = '/login?redirect=' + encodeURIComponent(window.location.pathname + window.location.search);
+        return;
+    }
+
+    try {
+        const res = await fetch('/api/orders/' + orderId, {
+            headers: { 'Authorization': 'Bearer ' + token }
+        });
+        const data = await res.json();
+
+        if (!data.success) {
+            card.innerHTML = '<h1>Couldn’t load booking</h1><p class="cf-sub">' + (data.error || 'Please check My Orders instead.') + '</p><a class="btn" href="/dashboard#orders">Go to My Orders</a>';
+            return;
+        }
+
+        const order = data.order;
+        const paid = order.paymentStatus === 'PAID';
+        const dateObj = new Date(order.date);
+        const formattedDate = dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+        card.innerHTML = `
+            <div class="cf-ico ${paid ? 'ok' : ''}">${paid ? TICK : HOURGLASS}</div>
+            <h1>${paid ? 'Booking confirmed!' : 'Payment pending'}</h1>
+            <p class="cf-sub">Order #${order.orderNumber}</p>
+            <div class="cf-pill ${paid ? 'paid' : ''}">
+                ${paid ? 'PAYMENT RECEIVED' : 'AWAITING PAYMENT CONFIRMATION'}
+            </div>
+            <div class="cf-det">
+                <div class="cf-row"><span>Package</span><span>${order.package.name}</span></div>
+                <div class="cf-row"><span>Date</span><span>${formattedDate}</span></div>
+                <div class="cf-row"><span>Time</span><span>${order.time}</span></div>
+                <div class="cf-row"><span>Location</span><span>${order.location}</span></div>
+                <div class="cf-row"><span>Amount</span><span>₹${order.totalAmount.toLocaleString()}</span></div>
+                <div class="cf-row"><span>Booking status</span><span>${order.status}</span></div>
+            </div>
+            <p class="cf-note">
+                ${paid
+                    ? "We've emailed your confirmation. Your booking status will show as <strong>Pending</strong> until we assign a makeup artist — that's expected, not an error. You'll get another email the moment an artist is assigned."
+                    : "We haven't received payment confirmation yet. If money was deducted from your account, it should confirm within a few minutes — refresh this page or check My Orders shortly."}
+            </p>
+            <a class="btn" href="/dashboard#orders">View My Orders</a>
+            <a class="btn ghost" href="/">Back to Home</a>
+        `;
+    } catch (err) {
+        card.innerHTML = '<h1>Something went wrong</h1><p class="cf-sub">Please check My Orders for your booking status.</p><a class="btn" href="/dashboard#orders">Go to My Orders</a>';
+    }
+}
+
+loadOrder();
+</script>
+<script src="js/glamai-engine.js?v=14" defer></script><script src="js/glamai.js?v=14" defer></script>
+</body>
+</html>

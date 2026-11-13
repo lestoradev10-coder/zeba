@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+Disallow: /checkout
+Disallow: /book-now?*
+Disallow: /checkout?*
+Disallow: /cart?*
+Disallow: /admin/
+Disallow: /assets/
+Disallow: /dashboard
+Disallow: /artist-dashboard
+Disallow: /admin-login
+Disallow: /admin-dashboard
+Disallow: /artist-admin-login
+Disallow: /artist-admin-dashboard
+
+Sitemap: https://www.glambyzebaish.com/sitemap.xml

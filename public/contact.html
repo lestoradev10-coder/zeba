@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact — Glam by Zebaish</title><meta name="description" content="Get in touch with Glam by Zebaish — bookings, questions and collaborations.">
+<link rel="canonical" href="https://www.glambyzebaish.com/contact"><link rel="icon" href="images/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="css/style.css?v=26">
+<link rel="stylesheet" href="css/inner.css?v=15">
+<link rel="stylesheet" href="css/pages.css?v=13"><link rel="stylesheet" href="css/auth.css?v=13"><link rel="stylesheet" href="css/glamai.css?v=13"></head>
+<body class="inner" data-page="contact"><main>
+<div class="wrap"><nav class="crumb pill" aria-label="Breadcrumb"><a href="index.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</a><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg><b>Contact</b></nav>
+<div class="col-h"><div><h1>Get in touch</h1></div><div style="display:grid;gap:18px"><p>We’d love to hear from you</p></div></div>
+<div class="cx rv-in">
+ <div class="cx-form"><h2>Send a message</h2><p class="lead">Fill out the form below and we’ll get back to you within 24 hours.</p>
+  <div class="auth-msg" id="contactFormStatus" role="alert"></div>
+  <form id="contactForm" novalidate>
+   <div class="fld"><label for="contactName">Full name</label><input id="contactName" name="name" type="text" placeholder="Your full name" autocomplete="name"></div>
+   <div class="fld"><label for="contactEmail">Email address</label><input id="contactEmail" name="email" type="email" placeholder="your@email.com" autocomplete="email"></div>
+   <div class="fld"><label for="contactSubject">Subject</label><input id="contactSubject" name="subject" type="text" placeholder="How can we help you?"></div>
+   <div class="fld"><label for="contactMessage">Message</label><textarea id="contactMessage" name="message" placeholder="Tell us about your vision..."></textarea></div>
+   <button class="btn block" type="submit" id="contactSubmitBtn"><span id="contactSubmitBtnText">Send message</span></button>
+  </form></div>
+ <aside class="cx-info"><h2>Reach us directly</h2><p class="lead">Connect with us through any of the channels below.</p>
+  <ul>
+   <li><span class="ico"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg></span><div><b>Email</b><a href="mailto:hello@glambyzebaish.com">hello@glambyzebaish.com</a></div></li>
+   <li><span class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span><div><b>Phone</b><a href="tel:+919505777790">+91 9505777790</a></div></li>
+   <li><span class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><div><b>Address</b><span>Hyderabad, Telangana</span></div></li>
+   <li><span class="ico"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></span><div><b>Follow us</b><a href="https://www.instagram.com/glambyzebaish?igsi=MWhrbGJhYmI1OWQxaA%3D%3D&utm_source=qr" target="_blank" rel="noopener">@GlamByZeba on Instagram</a></div></li>
+  </ul></aside>
+</div></div>
+<section class="sec"><div class="wrap"><div class="sec-head rv-in" style="margin-bottom:30px"><div><span class="eyebrow">Instagram</span><h2 class="h2">Inspire with<br>every post.</h2></div><p class="lead">Tag <b style="color:var(--head)">@GlamByZeba</b> in your beauty moments.</p></div></div>
+<div class="insta-wrap"><div class="insta" id="insta"></div></div></section>
+</main>
+<script src="js/data.js?v=13"></script><script src="js/app.js?v=25"></script><script>
+(function(){var $=window.$,ic=window.ic;
+ var ig=["ins1.webp","ins2.webp","ins3.webp","ins4.webp","ins5.webp","ins6.webp","b1.webp","b2.webp","b3.webp"].map(function(s){return '<a href="https://www.instagram.com/glambyzebaish" target="_blank" rel="noopener" aria-label="Open Instagram"><img loading="lazy" src="images/'+s+'" alt="" draggable="false">'+ic("insta")+"</a>"}).join("");$("#insta").innerHTML=ig+ig;
+ var st=$("#contactFormStatus");function say(ok,t){st.className="auth-msg show "+(ok?"ok":"err");st.textContent=t}
+ $("#contactForm").addEventListener("submit",function(e){e.preventDefault();
+  var payload={name:$("#contactName").value.trim(),email:$("#contactEmail").value.trim(),subject:$("#contactSubject").value.trim(),message:$("#contactMessage").value.trim()};
+  if(!payload.name||!payload.email||!payload.message)return say(false,"Please fill in your name, email and message.");
+  var btn=$("#contactSubmitBtn"),bt=$("#contactSubmitBtnText");btn.disabled=true;bt.textContent="Sending...";st.className="auth-msg";
+  fetch((window.GLAM_API_BASE||"")+"/api/contact",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)})
+   .then(function(r){return r.json()}).then(function(d){if(d.success){say(true,d.message||"Thanks for reaching out! We'll get back to you within 24 hours.");$("#contactForm").reset()}else say(false,d.error||"Something went wrong. Please try again.")})
+   .catch(function(){say(false,"Something went wrong. Please try again later.")}).finally(function(){btn.disabled=false;bt.textContent="Send message"});});
+})();</script><script src="js/glamai-engine.js?v=13" defer></script><script src="js/glamai.js?v=13" defer></script>
+</body></html>

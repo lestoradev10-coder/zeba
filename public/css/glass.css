@@ -1,0 +1,132 @@
+/* Glam by Zebaish — glass design for login / register / reset + book-now (v16) */
+body[data-auth] main{margin-top:-76px;background:#efe6fa url(../images/auth-bg2.webp) left bottom/cover no-repeat}
+.auth,.bk-scope{--gf-head:"Playfair Display","Cormorant Garamond",Georgia,serif;--gf-script:"Allura","Great Vibes","Brush Script MT",cursive;--gf-body:"Jost","Funnel Sans",Arial,sans-serif;--gl-bg:rgba(255,255,255,.30);--gl-line:rgba(255,255,255,.6);--fi-bg:rgba(255,255,255,.5);--fi-line:rgba(255,255,255,.75)}
+
+/* ===== auth layout ===== */
+body[data-auth] .auth{display:grid;grid-template-columns:1fr;place-items:center;min-height:100svh;padding:104px var(--pad) 56px;max-width:none;margin:0;gap:24px;font-family:var(--gf-body);font-size:13px}
+body[data-auth] .auth.top{grid-template-columns:minmax(0,1fr) 460px;place-items:center;align-items:center;column-gap:clamp(24px,4vw,64px);padding:104px clamp(24px,6vw,110px) 56px 31vw}
+.auth-hero{align-self:start;padding-top:clamp(10px,4vw,56px);max-width:520px}
+.auth-hero h2{font-family:var(--gf-head);font-weight:500;font-size:clamp(2rem,3.4vw,3rem);color:#3d1157;letter-spacing:-.01em;line-height:1.05}
+.auth-hero h2 em{display:block;font-family:var(--gf-script);font-style:normal;font-weight:400;font-size:1.45em;line-height:1;color:#4a1766;margin-top:2px;letter-spacing:0}
+.auth-hero .rule{display:block;width:120px;height:1px;background:linear-gradient(90deg,#4a1766,transparent);margin:16px 0}
+.auth-hero p{font-family:var(--gf-head);font-size:1.02rem;color:#4a2a63;line-height:1.5;max-width:22rem}
+.auth-perks{display:flex;gap:22px;margin-top:22px;flex-wrap:wrap;list-style:none}
+.auth-perks li{display:grid;justify-items:center;gap:7px;width:92px;text-align:center;font-size:12px;line-height:1.3;color:#3d1157;font-weight:500}
+.auth-perks .pi{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.45);border:1px solid rgba(255,255,255,.8);display:grid;place-items:center;color:#4a1766;backdrop-filter:blur(8px)}
+.auth-perks .pi svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+
+/* ===== glass card ===== */
+body[data-auth] .auth-f,body[data-auth] .auth-f.wide{width:min(380px,100%);background:var(--gl-bg);border:1px solid var(--gl-line);border-radius:20px;padding:24px 26px 22px;-webkit-backdrop-filter:blur(18px) saturate(1.3);backdrop-filter:blur(18px) saturate(1.3);box-shadow:0 14px 44px -16px rgba(74,23,102,.35),inset 0 1px 0 rgba(255,255,255,.7)}
+body[data-auth] .auth.top .auth-f{width:100%}
+.auth-badge{gap:6px;margin-bottom:10px}
+.auth-badge .auth-ico{width:38px;height:38px;background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.85);color:#4a1766}
+.auth-badge .auth-ico svg.i{width:18px;height:18px}
+.auth-role{font-size:10px;letter-spacing:.18em;color:#b8862a;font-weight:600}
+body[data-auth] .auth-f h1{font-family:var(--gf-head);font-weight:500;font-size:1.55rem;letter-spacing:0;color:#3d1157;margin-bottom:4px}
+body[data-auth] .auth-f>p{font-size:12px;color:#5d4a70;margin-bottom:16px}
+body[data-auth] .auth-f .fld{gap:4px;margin-bottom:11px}
+body[data-auth] .auth-f .fld label{font-size:11px;font-weight:600;color:#3d1157;letter-spacing:.02em}
+.in{position:relative;display:block}
+.in>svg.i{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:15px;height:15px;color:#6b3f8c;pointer-events:none;z-index:1}
+.in.ta>svg.i{top:12px;transform:none}
+body[data-auth] .auth-f input:not([type=checkbox]):not([type=file]),body[data-auth] .auth-f textarea,body[data-auth] .auth-f select{width:100%;height:36px;padding:0 12px 0 34px;border-radius:10px;border:1px solid var(--fi-line);background:var(--fi-bg);font:inherit;font-size:12.5px;color:#2b1a38;outline:none;transition:.18s;box-shadow:none}
+body[data-auth] .auth-f textarea{height:62px;min-height:0;padding:9px 12px 9px 34px;resize:none;line-height:1.4}
+body[data-auth] .auth-f ::placeholder{color:rgba(80,50,105,.5)}
+body[data-auth] .auth-f input:focus,body[data-auth] .auth-f textarea:focus{background:rgba(255,255,255,.75);border-color:#8a4cb3;box-shadow:0 0 0 2px rgba(138,76,179,.16)}
+.pw input{padding-right:36px!important}
+body[data-auth] .pw button{right:4px;width:28px;height:28px;color:#6b3f8c}
+body[data-auth] .pw button:hover{background:rgba(255,255,255,.6)}
+body[data-auth] .pw button svg.i{width:15px;height:15px;position:static;transform:none}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}
+body[data-auth] .auth-f .fld input[type=file]{height:auto;padding:5px 8px;font-size:11.5px;background:var(--fi-bg);border:1px solid var(--fi-line);border-radius:10px;color:#4a2a63}
+body[data-auth] .auth-f .fld input[type=file]::file-selector-button{margin-right:10px;border:0;border-radius:8px;padding:5px 12px;background:#4a1766;color:#fff;font:inherit;font-size:11px;font-weight:500;cursor:pointer}
+.fld .hint{font-size:10.5px!important;color:#6d5a80!important}
+body[data-auth] .auth-sec{font-family:var(--gf-head);font-size:.95rem;color:#3d1157;margin:4px 0 10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.7);text-align:center}
+body[data-auth] .auth-row{font-size:11.5px;margin:0 0 14px}
+body[data-auth] .chk{gap:7px;color:#3d1157;font-size:11.5px}
+body[data-auth] .chk input{width:14px;height:14px}
+body[data-auth] .chk.terms{font-size:11.5px;margin:2px 0 14px}
+body[data-auth] .auth-row a,body[data-auth] .chk a{color:#4a1766;font-weight:600}
+body[data-auth] .auth-f .btn{height:38px;border-radius:10px;font-size:13px;font-weight:500;letter-spacing:.03em;background:linear-gradient(135deg,#9a4fc0,#4a1766);box-shadow:0 8px 18px -10px rgba(74,23,102,.7)}
+body[data-auth] .auth-f .btn:hover{filter:brightness(1.08);transform:none}
+body[data-auth] .auth-f .alt{font-size:11.5px;margin-top:14px;color:#5d4a70}
+body[data-auth] .auth-f .alt a{color:#4a1766}
+body[data-auth] .auth-msg{font-size:11.5px;padding:8px 11px;border-radius:10px;margin-bottom:12px;background-clip:padding-box}
+@media(max-width:980px){
+  body[data-auth] .auth.top{grid-template-columns:1fr;row-gap:10px}
+  .auth-hero{padding-top:0;text-align:center;justify-self:center}
+  .auth-hero .rule{margin:12px auto}.auth-hero p{margin:0 auto}.auth-perks{display:none}
+  body[data-auth] .auth.top .auth-f{width:min(460px,100%)}
+}
+@media(max-width:480px){body[data-auth] .auth{padding:18px 14px 40px}body[data-auth] .auth-f,body[data-auth] .auth-f.wide{padding:20px 18px}.row2{grid-template-columns:1fr}}
+
+/* ===== book now ===== */
+body[data-page="book"] main{font-family:"Jost","Funnel Sans",Arial,sans-serif;font-size:13px}
+body[data-page="book"] .col-h h1{font-family:"Playfair Display",Georgia,serif;font-weight:500;font-size:clamp(1.6rem,2.6vw,2.2rem);letter-spacing:0}
+body[data-page="book"] .col-h p{font-size:13px}
+body[data-page="book"] .bk{grid-template-columns:minmax(0,1fr) 320px;gap:22px}
+body[data-page="book"] .bk-card,body[data-page="book"] .bk-box{background:rgba(255,255,255,.32);border:1px solid rgba(255,255,255,.65);border-radius:20px;-webkit-backdrop-filter:blur(18px) saturate(1.3);backdrop-filter:blur(18px) saturate(1.3);box-shadow:0 14px 44px -16px rgba(74,23,102,.3),inset 0 1px 0 rgba(255,255,255,.7)}
+body[data-page="book"] .bk-card{padding:24px}
+body[data-page="book"] .bk-form{gap:18px}
+body[data-page="book"] .bk-lbl{font-size:10.5px;margin-bottom:7px;letter-spacing:.14em}
+body[data-page="book"] .bk-sub{font-size:11px;margin-bottom:3px}
+body[data-page="book"] .bk-in,body[data-page="book"] .bk-form input[type=date],body[data-page="book"] .bk-form input[type=time],body[data-page="book"] .bk-form input[type=text],body[data-page="book"] .bk-form select,body[data-page="book"] .bk-form textarea{height:36px;padding:0 12px;border-radius:10px;border:1px solid rgba(255,255,255,.75);background:rgba(255,255,255,.5);font-size:12.5px}
+body[data-page="book"] .bk-form textarea{height:auto;min-height:64px;padding:9px 12px}
+body[data-page="book"] .bk-form input[readonly]{background:rgba(255,255,255,.3)}
+body[data-page="book"] .bk-venue{background:rgba(255,255,255,.28);border:1px solid rgba(255,255,255,.55);border-radius:14px;padding:12px;gap:9px}
+body[data-page="book"] .bk-note,body[data-page="book"] .bk-chk{font-size:11.5px}
+body[data-page="book"] .pkg-check-grid{grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:9px}
+body[data-page="book"] .pkg-check-card{padding:6px;border-radius:14px;border:1px solid rgba(255,255,255,.7);background:rgba(255,255,255,.4)}
+body[data-page="book"] .pkg-check-card.is-checked{border-color:#6b2d8f;background:rgba(255,255,255,.7);box-shadow:none}
+body[data-page="book"] .pkg-check-card img{height:62px;border-radius:9px;margin-bottom:6px}
+body[data-page="book"] .pkg-check-name{font-size:11.5px;font-weight:600}
+body[data-page="book"] .pkg-check-price{font-size:11px}
+body[data-page="book"] .pkg-check-badge{top:10px;right:10px;width:18px;height:18px}
+body[data-page="book"] .bk-total{display:none!important}
+body[data-page="book"] #perPackageDateTimeRows .ppdt-row{border-radius:14px!important;background:rgba(255,255,255,.28)!important;border:1px solid rgba(255,255,255,.55)!important;padding:12px!important}
+body[data-page="book"] #perPackageDateTimeRows :is(input,select){font-size:12px!important;border-radius:10px!important;background:rgba(255,255,255,.5)!important;border:1px solid rgba(255,255,255,.75)!important}
+body[data-page="book"] #perPackageDateTimeRows .ppdt-row>div:first-child{font-size:.95rem!important}
+body[data-page="book"] #perPackageDateTimeRows label{font-size:11px!important}
+/* selection box */
+.sel-box{padding:20px!important}
+.sel-box h3{font-family:"Playfair Display",Georgia,serif;font-weight:500;font-size:1.15rem;letter-spacing:0;margin-bottom:12px}
+.sel-list{display:grid;gap:8px;list-style:none;margin-bottom:12px}
+.sel-item{display:grid;grid-template-columns:42px 1fr auto;gap:9px;align-items:center;padding:6px;border-radius:12px;background:rgba(255,255,255,.45);border:1px solid rgba(255,255,255,.7)}
+.sel-item img{width:42px;height:42px;border-radius:9px;object-fit:cover;background:var(--lav)}
+.sel-item b{display:block;font-size:12px;font-weight:600;color:#3d1157;line-height:1.25}
+.sel-item span{font-size:11.5px;color:#b8862a;font-weight:600}
+.sel-x{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;color:#6b3f8c}
+.sel-x:hover{background:rgba(255,255,255,.7)}.sel-x svg{width:13px;height:13px}
+.sel-empty{font-size:12px;color:#5d4a70;padding:8px 2px 14px}
+.sel-total{display:flex;justify-content:space-between;align-items:baseline;padding:10px 2px 12px;border-top:1px solid rgba(255,255,255,.8);font-size:12px;color:#3d1157}
+.sel-total b{font-family:"Playfair Display",Georgia,serif;font-size:1.2rem;font-weight:600}
+body[data-page="book"] .sel-box .btn{height:40px;border-radius:10px;font-size:13px;font-weight:500;background:linear-gradient(135deg,#9a4fc0,#4a1766);gap:8px;letter-spacing:.03em}
+.sel-note{font-size:11px;color:#5d4a70;margin-top:10px;text-align:center}
+.sel-note a{color:#4a1766;font-weight:600;text-decoration:underline}
+@media(max-width:960px){body[data-page="book"] .bk{grid-template-columns:1fr}}
+
+.auth-hero h2.one em{display:inline;font-size:1.3em;margin:0 0 0 .12em;white-space:nowrap}
+.auth-hero h2.one span{display:block}
+@media(max-width:980px){body[data-auth] .auth.top{padding:100px var(--pad) 48px}}
+body[data-auth]{background:#fff}
+
+body[data-auth] .auth.top{align-items:start}
+body[data-auth] .auth.top .auth-hero{padding-top:6px;align-self:start}
+@media(max-width:980px){body[data-auth] .auth.top .auth-hero{padding-top:0}}
+
+/* v21 — register pages: hero text sits beside the form, vertically centred, whole group nudged left */
+body[data-auth] .auth.top{grid-template-columns:minmax(0,430px) minmax(0,500px);justify-content:start;align-items:center;column-gap:clamp(28px,3.5vw,64px);padding:104px 4vw 56px 26vw}
+body[data-auth] .auth.top .auth-hero{align-self:start;padding-top:196px;max-width:430px}
+body[data-auth] .auth.top .auth-f{width:100%}
+@media(max-width:1280px){body[data-auth] .auth.top{padding-left:22vw}}
+@media(max-width:980px){body[data-auth] .auth.top{grid-template-columns:1fr;justify-content:center;padding:100px var(--pad) 48px}body[data-auth] .auth.top .auth-hero{align-self:start;padding-top:0}}
+/* v21b — hero text starts level with the "Full name" field */
+@media(min-width:981px){body[data-auth] .auth.top{align-items:start}body[data-auth] .auth.top .auth-hero{align-self:start;padding-top:0;margin-top:clamp(150px,11vw,200px)}}
+
+/* v23 — login / register / reset: solid white card instead of glass */
+body[data-auth] .auth-f,body[data-auth] .auth-f.wide{background:#fff;border:1px solid #eadff3;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:0 16px 46px -20px rgba(74,23,102,.28)}
+body[data-auth] .auth-f input:not([type=checkbox]):not([type=file]),body[data-auth] .auth-f textarea,body[data-auth] .auth-f select,body[data-auth] .auth-f .fld input[type=file]{background:#faf7fd;border-color:#e6dcef}
+body[data-auth] .auth-f input:focus,body[data-auth] .auth-f textarea:focus{background:#fff;border-color:#8a4cb3}
+body[data-auth] .auth-badge .auth-ico{background:#f3ebfa;border-color:#eadff3}
+body[data-auth] .auth-sec{border-top-color:#eadff3}
+body[data-auth] .pw button:hover{background:#f3ebfa}

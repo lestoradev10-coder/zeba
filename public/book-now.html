@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1635552701268110');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1635552701268110&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Book Your Glam Session — Glam by Zebaish</title>
+<meta name="description" content="Book bridal, party and groom makeup at your doorstep in Hyderabad, Bangalore and Kochi. Choose your package, date, time and venue.">
+<link rel="canonical" href="https://www.glambyzebaish.com/book-now">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="stylesheet" href="css/style.css?v=26">
+<link rel="stylesheet" href="css/inner.css?v=19">
+<link rel="stylesheet" href="css/glamai.css?v=14">
+</head>
+<body class="inner" data-page="book">
+<main>
+<div class="wrap">
+  <nav class="crumb pill" aria-label="Breadcrumb"><a href="index.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</a><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg><b>Book now</b></nav>
+  <div class="col-h"><div><h1>Book your glam session</h1></div><div style="display:grid;gap:18px"><p>Fill in the details below and we’ll get back to you within 2 hours.</p></div></div>
+
+  <div class="bk">
+    <div class="bk-card">
+      <div id="editOrderBanner" class="bk-edit"><span id="editOrderBannerText">Editing your booking — update the details below and pay to confirm.</span></div>
+
+      <form id="bookingForm" class="bk-form" action="/checkout" method="GET">
+
+        <div>
+          <!-- package picker grid removed from view: packages come from the package page / cart and are listed in the SELECTED ITEMS panel.
+               The hidden grid stays in the DOM so the selection logic keeps working. -->
+          <div id="packageCheckboxGrid" class="pkg-check-grid" style="display:none" aria-hidden="true"></div>
+          <p id="packageSelectError" class="bk-err">Please select at least one package.</p>
+          <div id="packageSelectTotal" class="bk-total" style="display:none"><span id="packageSelectCount"></span><span id="packageSelectTotalAmount"></span></div>
+        </div>
+
+        <label id="sameDateTimeToggleWrap" class="bk-chk" style="display:none">
+          <input type="checkbox" id="sameDateTimeToggle" checked> Use the same date, time &amp; address for all selected packages
+        </label>
+
+        <div id="sharedDateTimeRow" class="bk-grid2">
+          <div><div class="bk-lbl"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg> Date</div><input type="date" name="date" id="sharedDateInput" required></div>
+          <div><div class="bk-lbl"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Time</div><input type="time" name="time" required value="10:00"></div>
+        </div>
+
+        <div id="perPackageDateTimeRows" style="display:none;flex-direction:column;gap:14px"></div>
+
+        <div id="sharedLocationRow">
+          <div class="bk-lbl"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg> Venue / address</div>
+          <div class="bk-venue">
+            <div id="savedAddressRow" style="display:none">
+              <span class="bk-sub">Saved addresses</span>
+              <select id="savedAddressSelect" onchange="applySavedAddress(this.value)"><option value="">+ Use a new address</option></select>
+            </div>
+            <input type="text" name="addressLine" placeholder="Flat / House No., Building, Street" required>
+            <div class="bk-grid2">
+              <div><span class="bk-sub">City</span><select name="city" required><option value="Hyderabad">Hyderabad</option><option value="Bangalore">Bangalore</option><option value="Kochi">Kochi</option></select></div>
+              <div><span class="bk-sub">State</span><input type="text" name="state" value="Telangana" readonly></div>
+            </div>
+            <div class="bk-grid2" style="grid-template-columns:2fr 1fr">
+              <div><span class="bk-sub">Area / locality</span><select name="area" required><option value="">Select your area</option></select></div>
+              <div><span class="bk-sub">Pincode</span><input type="text" name="pincode" readonly placeholder="Auto-filled"></div>
+            </div>
+            <input type="text" name="landmark" placeholder="Landmark (optional)">
+            <label id="saveAddressRow" class="bk-chk" style="display:none"><input type="checkbox" id="saveAddressCheckbox"> Save this address for next time</label>
+            <p class="bk-note"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg> We currently offer in-person bookings in Hyderabad, Bangalore and Kochi.</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="bk-lbl"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/></svg> Special requests</div>
+          <textarea name="notes" rows="3" placeholder="Any specific look, skin concerns, or extra details…"></textarea>
+        </div>
+
+      </form>
+    </div>
+
+    <aside class="bk-side">
+      <div class="bk-box sel-box">
+        <h4 class="sel-h">SELECTED ITEMS</h4>
+        <div id="selEmpty" class="sel-empty">No packages selected yet. <a href="packages.html" style="color:var(--head);font-weight:600;text-decoration:underline">Browse packages</a></div>
+        <ul id="selList" class="sel-list"></ul>
+        <div id="selTotal" class="pd" style="display:none">
+          <h4 class="sel-h" id="selCount">PRICE DETAILS (0 items)</h4>
+          <div class="pd-r"><span>Total price</span><span id="selSub">₹0</span></div>
+          <div class="pd-r"><span>Service charge</span><span class="ok">Free</span></div>
+          <div class="pd-r tot"><b>Total Amount</b><b id="selAmount">₹0</b></div>
+        </div>
+        <button type="submit" form="bookingForm" class="btn block sel-go"><span id="bookingSubmitLabel">CONTINUE</span></button>
+        <p class="sel-note">Need help? <a href="https://wa.me/919505777790?text=Hi%20Glam%20by%20Zeba%2C%20I%27d%20like%20to%20book%20a%20makeup%20service!" target="_blank" rel="noopener">Chat on WhatsApp</a></p>
+      </div>
+    </aside>
+  </div>
+</div>
+</main>
+
+<script src="js/data.js?v=14"></script>
+<script src="js/app.js?v=14"></script>
+<script src="hyderabad-areas.js"></script>
+<script src="service-areas.js"></script>
+<script>
+/* helpers the booking script expects (same storage keys as before) */
+function getUser(){var d=localStorage.getItem('user');try{return d?JSON.parse(d):null}catch(e){return null}}
+(function(){
+  function rd(k){try{var r=localStorage.getItem(k);return r?JSON.parse(r):null}catch(e){return null}}
+  function wr(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+  window.Glam={
+    getCart:function(){return rd('glamCart')||[]},
+    saveCheckoutItems:function(x){wr('glamCheckoutItems',x)},
+    getCheckoutItems:function(){return rd('glamCheckoutItems')},
+    clearCheckoutItems:function(){try{localStorage.removeItem('glamCheckoutItems')}catch(e){}},
+    getQueue:function(){return rd('glamBookingQueue')},
+    saveQueue:function(q){wr('glamBookingQueue',q)},
+    clearQueue:function(){try{localStorage.removeItem('glamBookingQueue')}catch(e){}}
+  };
+})();
+</script>
+<script>
+/* ========================================================================
+   BOOK NOW — MULTI-SELECT PACKAGE GRID
+   Replaces the old single <select> with a checkbox grid built from
+   GLAM_PACKAGES. Preselects from ?service=<id> (single "Book This
+   Package" deep links) or from the cart (arriving via "Book These
+   Packages"). On submit, the first selected package goes straight to
+   checkout.html the same way the old form did; any additional packages
+   are stashed in glamBookingQueue, and checkout.html now picks up the
+   next one automatically once each payment is confirmed, showing a
+   "Package X of Y" progress badge along the way.
+   ======================================================================== */
+(function () {
+  "use strict";
+
+  /* ---------------- live "today" date helper ---------------- */
+  // Always reflects the visitor's current local date — never a fixed date.
+  function getTodayISO() {
+    var d = new Date();
+    var year = d.getFullYear();
+    var month = String(d.getMonth() + 1).padStart(2, '0');
+    var day = String(d.getDate()).padStart(2, '0');
+    return year + '-' + month + '-' + day;
+  }
+
+  /* ---------------- Hyderabad-only structured address helpers ---------------- */
+
+  function areaOptionsHtml(selected, city) {
+    if (typeof getAreasForCity !== 'function') return '';
+    return getAreasForCity(city || 'Hyderabad').map(function (a) {
+      return '<option value="' + a.area + '"' + (a.area === selected ? ' selected' : '') + '>' + a.area + '</option>';
+    }).join('');
+  }
+
+  function populateAreaSelect(select, selected, city) {
+    if (!select) return;
+    select.innerHTML = select.options[0].outerHTML + areaOptionsHtml(selected, city);
+  }
+
+  // Keeps one City select, its Area select, Pincode box and State label in
+  // sync: changing the city reloads that city's areas and clears the pincode.
+  function wireCityArea(citySelect, areaSelect, pincodeInput, stateEl) {
+    function setState() {
+      if (!stateEl) return;
+      var st = getStateForCity(citySelect.value);
+      if (stateEl.tagName === 'INPUT') stateEl.value = st; else stateEl.textContent = 'State: ' + st;
+    }
+    citySelect.addEventListener('change', function () {
+      populateAreaSelect(areaSelect, '', citySelect.value);
+      if (pincodeInput) pincodeInput.value = '';
+      setState();
+    });
+    areaSelect.addEventListener('change', function () {
+      if (pincodeInput) pincodeInput.value = getPincodeForArea(areaSelect.value, citySelect.value);
+    });
+    setState();
+  }
+
+  // Combines the structured fields into one clean, professional address
+  // string — this is what actually gets stored on the Order (and shown in
+  // checkout, dashboards, and emails), so nothing downstream needs to know
+  // it used to be a single free-text field.
+  function composeAddress(addressLine, area, pincode, landmark, city) {
+    city = city || 'Hyderabad';
+    var parts = [addressLine];
+    if (landmark) parts.push('near ' + landmark);
+    parts.push(area);
+    parts.push(city + ', ' + getStateForCity(city) + (pincode ? ' - ' + pincode : ''));
+    return parts.filter(Boolean).join(', ');
+  }
+
+  function pkgCardHtml(pkg, checked) {
+    return '<label class="pkg-check-card' + (checked ? ' is-checked' : '') + '" data-id="' + pkg.id + '">' +
+      '<input type="checkbox" name="packages" value="' + pkg.id + '"' + (checked ? ' checked' : '') + ' style="position:absolute;opacity:0;width:0;height:0;">' +
+      '<img src="images/' + pkg.image + '" alt="' + pkg.name + '">' +
+      '<span class="pkg-check-name">' + pkg.name + '</span>' +
+      '<span class="pkg-check-price">' + pkg.priceLabel + '</span>' +
+      '<span class="pkg-check-badge"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span>' +
+      '</label>';
+  }
+
+  function getSelectedIds() {
+    var grid = document.getElementById('packageCheckboxGrid');
+    if (!grid) return [];
+    return Array.prototype.slice.call(grid.querySelectorAll('input[type=checkbox]:checked')).map(function (i) { return i.value; });
+  }
+
+  function updateSelectionSummary() {
+    var ids = getSelectedIds();
+    var totalEl = document.getElementById('packageSelectTotal');
+    var countEl = document.getElementById('packageSelectCount');
+    var amountEl = document.getElementById('packageSelectTotalAmount');
+    var errorEl = document.getElementById('packageSelectError');
+    if (errorEl && ids.length > 0) errorEl.style.display = 'none';
+    if (totalEl) {
+      if (ids.length === 0) {
+        totalEl.style.display = 'none';
+      } else {
+        var total = 0;
+        ids.forEach(function (id) {
+          var pkg = typeof getPackageById === 'function' ? getPackageById(id) : null;
+          if (pkg) total += pkg.price;
+        });
+        countEl.textContent = ids.length + ' package' + (ids.length > 1 ? 's' : '') + ' selected';
+        amountEl.textContent = '₹' + total.toLocaleString('en-IN');
+        totalEl.style.display = 'flex';
+      }
+    }
+    renderSelectionSide(ids);
+    updateDateTimeMode(ids);
+  }
+
+  function renderSelectionSide(ids) {
+    var list = document.getElementById('selList'), empty = document.getElementById('selEmpty'), tot = document.getElementById('selTotal');
+    if (!list) return;
+    var locked = !!window.__glamEditOrderId, total = 0;
+    list.innerHTML = ids.map(function (id) {
+      var pkg = typeof getPackageById === 'function' ? getPackageById(id) : null;
+      if (!pkg) return '';
+      total += pkg.price;
+      return '<li class="sel-item"><img src="images/' + pkg.image + '" alt=""><div><b>' + pkg.name + '</b><span>' + pkg.priceLabel + '</span></div>' +
+        (locked ? '' : '<button type="button" class="sel-x" data-rm="' + pkg.id + '" aria-label="Remove ' + pkg.name + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>') + '</li>';
+    }).join('');
+    empty.style.display = ids.length ? 'none' : 'block';
+    tot.style.display = ids.length ? 'block' : 'none';
+    document.getElementById('selCount').textContent = 'PRICE DETAILS (' + ids.length + ' item' + (ids.length > 1 ? 's' : '') + ')';
+    document.getElementById('selSub').textContent = '₹' + total.toLocaleString('en-IN');
+    document.getElementById('selAmount').textContent = '₹' + total.toLocaleString('en-IN');
+    list.querySelectorAll('[data-rm]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var card = document.querySelector('#packageCheckboxGrid .pkg-check-card[data-id="' + b.getAttribute('data-rm') + '"]');
+        if (!card) return;
+        var input = card.querySelector('input[type=checkbox]');
+        input.checked = false; card.classList.remove('is-checked'); updateSelectionSummary();
+      });
+    });
+  }
+
+  /* ---------------- shared vs per-package date & time ---------------- */
+
+  function perPackageRowHtml(pkg) {
+    return '<div class="ppdt-row" data-id="' + pkg.id + '" style="border:1.5px solid #e8e4ec; border-radius: 10px; padding: 14px 16px;">' +
+      '<div style="font-weight:700; color:#2d1b4e; font-size:0.85rem; margin-bottom:10px;">' + pkg.name + '</div>' +
+      '<div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">' +
+      '<div>' +
+      '<label style="display:block; font-weight:600; color:#2d1b4e; margin-bottom:6px; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.6px; opacity:0.7;">Date</label>' +
+      '<input type="date" class="ppdt-date" required min="' + getTodayISO() + '" value="' + getTodayISO() + '" style="width:100%; padding:11px 14px; border:1.5px solid #e8e4ec; border-radius:9px; font-size:0.88rem; background:#fcfafc; color:#2d1b4e; outline:none;">' +
+      '</div>' +
+      '<div>' +
+      '<label style="display:block; font-weight:600; color:#2d1b4e; margin-bottom:6px; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.6px; opacity:0.7;">Time</label>' +
+      '<input type="time" class="ppdt-time" required value="10:00" style="width:100%; padding:11px 14px; border:1.5px solid #e8e4ec; border-radius:9px; font-size:0.88rem; background:#fcfafc; color:#2d1b4e; outline:none;">' +
+      '</div>' +
+      '</div>' +
+      '<div style="margin-top:12px;">' +
+      '<label style="display:block; font-weight:600; color:#2d1b4e; margin-bottom:6px; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.6px; opacity:0.7;">Venue / Address</label>' +
+      '<div style="background:#fff; border:1.5px solid #e8e4ec; border-radius:9px; padding:12px 14px 14px;">' +
+      '<div class="ppdt-saved-address-wrap" style="display:none; margin-bottom:10px;">' +
+      '<label style="display:block; font-weight:600; color:#2d1b4e; margin-bottom:6px; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.6px; opacity:0.65;">Saved Addresses</label>' +
+      '<select class="ppdt-saved-address" style="width:100%; padding:10px 12px; border:1.5px solid #e8e4ec; border-radius:8px; font-size:0.85rem; background:#fcfafc; color:#2d1b4e; outline:none; box-sizing:border-box;"><option value="">+ Use a new address</option></select>' +
+      '</div>' +
+      '<input type="text" class="ppdt-addressline" required placeholder="Flat / House No., Building, Street" style="width:100%; padding:10px 12px; margin-bottom:10px; border:1.5px solid #e8e4ec; border-radius:8px; font-size:0.85rem; background:#fcfafc; color:#2d1b4e; outline:none; box-sizing:border-box;">' +
+      '<select class="ppdt-city" required style="width:100%; padding:10px 12px; margin-bottom:10px; border:1.5px solid #e8e4ec; border-radius:8px; font-size:0.85rem; background:#fcfafc; color:#2d1b4e; outline:none; box-sizing:border-box;"><option value="Hyderabad">Hyderabad</option><option value="Bangalore">Bangalore</option><option value="Kochi">Kochi</option></select>' +
+      '<div style="display:grid; grid-template-columns:2fr 1fr; gap:10px; margin-bottom:10px;">' +
+      '<select class="ppdt-area" required style="width:100%; padding:10px 12px; border:1.5px solid #e8e4ec; border-radius:8px; font-size:0.85rem; background:#fcfafc; color:#2d1b4e; outline:none; box-sizing:border-box;"><option value="">Select area</option></select>' +
+      '<input type="text" class="ppdt-pincode" readonly placeholder="Pincode" style="width:100%; padding:10px 12px; border:1.5px solid #e8e4ec; border-radius:8px; font-size:0.85rem; background:#f3f0f6; color:#2d1b4e; outline:none; box-sizing:border-box;">' +
+      '</div>' +
+      '<input type="text" class="ppdt-landmark" placeholder="Landmark (optional)" style="width:100%; padding:10px 12px; border:1.5px solid #e8e4ec; border-radius:8px; font-size:0.85rem; background:#fcfafc; color:#2d1b4e; outline:none; box-sizing:border-box;">' +
+      '<label class="ppdt-save-row" style="display:none; align-items:center; gap:8px; margin-top:10px; font-size:0.78rem; color:#2d1b4e; cursor:pointer;">' +
+      '<input type="checkbox" class="ppdt-save-checkbox" style="width:15px; height:15px; accent-color:#D4AF37;"> Save this address for next time' +
+      '</label>' +
+      '<p class="ppdt-state-note" style="margin:8px 0 0; font-size:0.68rem; color:#999;">State: Telangana</p>' +
+      '</div>' +
+      '</div>' +
+      '</div>';
+  }
+
+  function renderPerPackageRows(ids) {
+    var container = document.getElementById('perPackageDateTimeRows');
+    if (!container) return;
+    var existing = {};
+    container.querySelectorAll('.ppdt-row').forEach(function (row) {
+      existing[row.getAttribute('data-id')] = {
+        date: row.querySelector('.ppdt-date').value,
+        time: row.querySelector('.ppdt-time').value,
+        addressLine: row.querySelector('.ppdt-addressline').value,
+        city: row.querySelector('.ppdt-city').value,
+        area: row.querySelector('.ppdt-area').value,
+        pincode: row.querySelector('.ppdt-pincode').value,
+        landmark: row.querySelector('.ppdt-landmark').value
+      };
+    });
+    container.innerHTML = ids.map(function (id) {
+      var pkg = getPackageById(id);
+      return pkg ? perPackageRowHtml(pkg) : '';
+    }).join('');
+    container.querySelectorAll('.ppdt-row').forEach(function (row) {
+      var id = row.getAttribute('data-id');
+      var areaSelect = row.querySelector('.ppdt-area');
+      var citySelect = row.querySelector('.ppdt-city');
+      var prev = existing[id];
+      if (prev && prev.city) citySelect.value = prev.city;
+      populateAreaSelect(areaSelect, prev ? prev.area : '', citySelect.value);
+      wireCityArea(citySelect, areaSelect, row.querySelector('.ppdt-pincode'), row.querySelector('.ppdt-state-note'));
+      if (prev) {
+        row.querySelector('.ppdt-date').value = prev.date;
+        row.querySelector('.ppdt-time').value = prev.time;
+        row.querySelector('.ppdt-addressline').value = prev.addressLine;
+        row.querySelector('.ppdt-pincode').value = prev.pincode || getPincodeForArea(prev.area, citySelect.value);
+        row.querySelector('.ppdt-landmark').value = prev.landmark;
+      }
+      setupSavedAddressForRow(row, !prev);
+    });
+  }
+
+  function updateDateTimeMode(ids) {
+    var toggleWrap = document.getElementById('sameDateTimeToggleWrap');
+    var toggle = document.getElementById('sameDateTimeToggle');
+    var sharedRow = document.getElementById('sharedDateTimeRow');
+    var perRow = document.getElementById('perPackageDateTimeRows');
+    var sharedLocationRow = document.getElementById('sharedLocationRow');
+    if (!toggleWrap || !toggle || !sharedRow || !perRow) return;
+
+    if (ids.length > 1) {
+      toggleWrap.style.display = 'flex';
+    } else {
+      toggleWrap.style.display = 'none';
+      toggle.checked = true;
+    }
+
+    var usingShared = ids.length <= 1 || toggle.checked;
+    sharedRow.style.display = usingShared ? 'grid' : 'none';
+    perRow.style.display = usingShared ? 'none' : 'flex';
+    if (sharedLocationRow) {
+      sharedLocationRow.style.display = usingShared ? 'block' : 'none';
+      var sharedAddressLine = sharedLocationRow.querySelector('[name="addressLine"]');
+      var sharedArea = sharedLocationRow.querySelector('[name="area"]');
+      if (sharedAddressLine) sharedAddressLine.required = usingShared;
+      if (sharedArea) sharedArea.required = usingShared;
+    }
+
+    if (!usingShared) renderPerPackageRows(ids);
+  }
+
+  function getPerPackageDetails() {
+    var container = document.getElementById('perPackageDateTimeRows');
+    var map = {};
+    if (!container) return map;
+    container.querySelectorAll('.ppdt-row').forEach(function (row) {
+      var addressLine = row.querySelector('.ppdt-addressline').value.trim();
+      var area = row.querySelector('.ppdt-area').value;
+      var city = row.querySelector('.ppdt-city').value;
+      var pincode = row.querySelector('.ppdt-pincode').value;
+      var landmark = row.querySelector('.ppdt-landmark').value.trim();
+      map[row.getAttribute('data-id')] = {
+        date: row.querySelector('.ppdt-date').value,
+        time: row.querySelector('.ppdt-time').value,
+        location: (addressLine && area) ? composeAddress(addressLine, area, pincode, landmark, city) : ''
+      };
+    });
+    return map;
+  }
+
+  function renderPackageGrid() {
+    var grid = document.getElementById('packageCheckboxGrid');
+    if (!grid || typeof GLAM_PACKAGES === 'undefined') return;
+
+    var urlParams = new URLSearchParams(window.location.search);
+    var deepLinkId = urlParams.get('service');
+    var cartIds = (window.Glam && window.Glam.getCart) ? window.Glam.getCart() : [];
+    // Editing an existing (unpaid) order locks selection to that order's
+    // own package — it always wins over a deep-link or whatever's in the cart.
+    var preselected = window.__glamEditOrderSlug ? [window.__glamEditOrderSlug] : (deepLinkId ? [deepLinkId] : cartIds);
+
+    grid.innerHTML = GLAM_PACKAGES.map(function (pkg) {
+      return pkgCardHtml(pkg, preselected.indexOf(pkg.id) !== -1);
+    }).join('');
+
+    if (window.__glamEditOrderId) {
+      // Lock the grid: the customer is here to fix a failed/unpaid
+      // booking's date, time or address — not to change what they
+      // ordered — so package cards become read-only.
+      grid.style.pointerEvents = 'none';
+      grid.style.opacity = '0.75';
+    } else {
+      grid.style.pointerEvents = '';
+      grid.style.opacity = '';
+      grid.querySelectorAll('.pkg-check-card').forEach(function (card) {
+        var input = card.querySelector('input[type=checkbox]');
+        card.addEventListener('click', function (e) {
+          if (e.target !== input) {
+            e.preventDefault();
+            input.checked = !input.checked;
+          }
+          card.classList.toggle('is-checked', input.checked);
+          updateSelectionSummary();
+        });
+      });
+    }
+
+    updateSelectionSummary();
+  }
+
+  // ========================================
+  // EDIT AN EXISTING (UNPAID) ORDER
+  // Reached via /book-now?editOrder=<id> — the "Pay Now / Edit" link on
+  // the customer dashboard for an order that's still PENDING or FAILED.
+  // Loads that order, locks the form to its package, and prefills
+  // date/time/address so the customer only has to fix what needs fixing
+  // before paying again.
+  // ========================================
+  async function initEditOrderMode() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var editOrderId = urlParams.get('editOrder');
+    if (!editOrderId) return;
+
+    var token = localStorage.getItem('userToken');
+    if (!token) {
+      window.location.href = '/login?redirect=' + encodeURIComponent(window.location.pathname + window.location.search);
+      return;
+    }
+
+    try {
+      var res = await fetch('/api/orders/' + editOrderId, {
+        headers: { 'Authorization': 'Bearer ' + token }
+      });
+      var data = await res.json();
+      if (!data.success || !data.order) {
+        alert('That booking could not be found.');
+        return;
+      }
+      var order = data.order;
+      if (order.paymentStatus === 'PAID') {
+        alert('This booking has already been paid for.');
+        window.location.href = '/dashboard#orders';
+        return;
+      }
+      if (order.status === 'CANCELLED') {
+        alert('This booking has been cancelled and can no longer be edited.');
+        window.location.href = '/dashboard#orders';
+        return;
+      }
+
+      window.__glamEditOrder = order;
+      window.__glamEditOrderId = order.id;
+      window.__glamEditOrderSlug = order.package && order.package.slug;
+
+      var banner = document.getElementById('editOrderBanner');
+      var bannerText = document.getElementById('editOrderBannerText');
+      if (banner && bannerText) {
+        bannerText.textContent = 'Editing booking #' + (order.orderNumber || '') + ' — update the date, time or address below, then pay to confirm.';
+        banner.style.display = 'block';
+      }
+      var submitLabel = document.getElementById('bookingSubmitLabel');
+      if (submitLabel) submitLabel.textContent = 'UPDATE & PAY';
+    } catch (e) {
+      console.error('Error loading order to edit:', e);
+    }
+  }
+
+  // Prefills the shared date/time/address fields from the order being
+  // edited. Address is best-effort: if the order used a saved address
+  // (addressId) it's applied properly once loadSavedAddresses() resolves;
+  // otherwise the raw location string is dropped into the address line
+  // and the customer re-picks the area so pincode/area stay accurate.
+  function applyEditOrderPrefill() {
+    var order = window.__glamEditOrder;
+    if (!order) return;
+
+    var dateInput = document.getElementById('sharedDateInput');
+    if (dateInput && order.date) {
+      var d = new Date(order.date);
+      if (!isNaN(d)) {
+        var iso = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+        dateInput.min = (iso < dateInput.min) ? iso : dateInput.min;
+        dateInput.value = iso;
+      }
+    }
+
+    var form = document.getElementById('bookingForm');
+    var timeInput = form && form.querySelector('[name="time"]');
+    if (timeInput && order.time) timeInput.value = order.time;
+
+    var addressLineInput = document.querySelector('#sharedLocationRow [name="addressLine"]');
+    if (addressLineInput && order.location && !order.addressId) {
+      addressLineInput.value = order.location;
+    }
+  }
+
+
+  function handleSubmit(e) {
+    var ids = getSelectedIds();
+    var errorEl = document.getElementById('packageSelectError');
+
+    if (ids.length === 0) {
+      e.preventDefault();
+      if (errorEl) errorEl.style.display = 'block';
+      if (errorEl) errorEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    e.preventDefault();
+
+    var form = e.target;
+    var notes = form.querySelector('[name="notes"]').value;
+    var toggle = document.getElementById('sameDateTimeToggle');
+    var usingShared = ids.length <= 1 || (toggle && toggle.checked);
+
+    // Build ONE item per selected package — each carries its own
+    // date/time/location. checkout.html reads this whole list and shows
+    // every package + every address together, with one combined total and
+    // one payment, instead of the old "book one, queue the rest" flow.
+    var items = [];
+
+    if (usingShared) {
+      var sharedDate = form.querySelector('[name="date"]').value;
+      var sharedTime = form.querySelector('[name="time"]').value;
+      var sharedAddressLine = form.querySelector('[name="addressLine"]').value.trim();
+      var sharedArea = form.querySelector('[name="area"]').value;
+      var sharedPincode = form.querySelector('[name="pincode"]').value;
+      var sharedCity = form.querySelector('[name="city"]').value;
+      var sharedLandmark = form.querySelector('[name="landmark"]').value.trim();
+      var sharedLocation = (sharedAddressLine && sharedArea) ? composeAddress(sharedAddressLine, sharedArea, sharedPincode, sharedLandmark, sharedCity) : '';
+      items = ids.map(function (id) {
+        return { id: id, date: sharedDate, time: sharedTime, location: sharedLocation };
+      });
+      maybeSaveNewAddress(sharedAddressLine, sharedArea, sharedPincode, sharedLandmark, sharedCity);
+    } else {
+      var perPackage = getPerPackageDetails();
+      var missing = ids.some(function (id) {
+        var d = perPackage[id];
+        return !d || !d.date || !d.time || !d.location;
+      });
+      if (missing) {
+        var perRow = document.getElementById('perPackageDateTimeRows');
+        if (perRow) perRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+      items = ids.map(function (id) {
+        var d = perPackage[id];
+        return { id: id, date: d.date, time: d.time, location: d.location };
+      });
+      document.querySelectorAll('#perPackageDateTimeRows .ppdt-row').forEach(function (row) {
+        maybeSaveNewAddressFromRow(row);
+      });
+    }
+
+    // Editing an existing unpaid order: attach its id so checkout.html's
+    // call to /api/orders/create updates that order in place instead of
+    // creating a brand new one. The package grid is locked in this mode,
+    // so ids is always exactly the edited order's own package.
+    if (window.__glamEditOrderId && items.length === 1) {
+      items[0].orderId = window.__glamEditOrderId;
+    }
+
+    if (window.Glam) {
+      window.Glam.saveCheckoutItems({ items: items, notes: notes });
+      window.Glam.clearQueue(); // drop any stale legacy queue from an old session
+    }
+
+    // Meta Pixel: "Schedule" — someone has picked package(s), a date/time
+    // and address and is heading to pay. Meta defines Schedule as
+    // "booked an appointment", which matches this step.
+    if (typeof fbq === 'function') {
+      fbq('track', 'Schedule', {
+        content_ids: ids,
+        content_type: 'product',
+        num_items: ids.length
+      });
+    }
+
+    // Small delay so the pixel request has time to leave the browser
+    // before we navigate away (instant navigation can cancel it).
+    setTimeout(function () {
+      window.location.href = '/checkout';
+    }, 250);
+  }
+
+  document.addEventListener('DOMContentLoaded', async function () {
+    await initEditOrderMode();
+    renderPackageGrid();
+    var form = document.getElementById('bookingForm');
+    if (form) form.addEventListener('submit', handleSubmit);
+    var toggle = document.getElementById('sameDateTimeToggle');
+    if (toggle) toggle.addEventListener('change', function () { updateDateTimeMode(getSelectedIds()); });
+
+    // Shared date input — always default to and cap at today's live date,
+    // never a hardcoded date, so the picker never goes stale.
+    var sharedDateInput = document.getElementById('sharedDateInput');
+    if (sharedDateInput) {
+      var today = getTodayISO();
+      sharedDateInput.min = today;
+      sharedDateInput.value = today;
+    }
+
+    // Shared "Venue / Address" area dropdown — populate from the selected city's areas
+    // and auto-fill the read-only pincode field when an area is chosen.
+    var sharedAreaSelect = document.querySelector('#sharedLocationRow [name="area"]');
+    var sharedPincodeInput = document.querySelector('#sharedLocationRow [name="pincode"]');
+    var sharedCitySelect = document.querySelector('#sharedLocationRow [name="city"]');
+    var sharedStateInput = document.querySelector('#sharedLocationRow [name="state"]');
+    if (sharedAreaSelect && sharedCitySelect) {
+      populateAreaSelect(sharedAreaSelect, '', sharedCitySelect.value);
+      wireCityArea(sharedCitySelect, sharedAreaSelect, sharedPincodeInput, sharedStateInput);
+    }
+
+    if (window.__glamEditOrder) applyEditOrderPrefill();
+
+    await loadSavedAddresses();
+
+    // If the order being edited used a saved address, select it now that
+    // the saved-addresses dropdown is populated.
+    if (window.__glamEditOrder && window.__glamEditOrder.addressId) {
+      var savedSelect = document.getElementById('savedAddressSelect');
+      if (savedSelect && savedSelect.querySelector('option[value="' + window.__glamEditOrder.addressId + '"]')) {
+        savedSelect.value = window.__glamEditOrder.addressId;
+        applySavedAddress(window.__glamEditOrder.addressId);
+      }
+    }
+  });
+
+  // ========================================
+  // SAVED ADDRESSES (returning customers)
+  // ========================================
+  var savedAddresses = [];
+
+  async function loadSavedAddresses() {
+    var user = typeof getUser === 'function' ? getUser() : null;
+    if (!user) return; // guests don't have saved addresses
+
+    try {
+      var token = localStorage.getItem('userToken');
+      var res = await fetch('/api/customers/' + user.id + '/addresses', {
+        headers: { 'Authorization': 'Bearer ' + token }
+      });
+      var data = await res.json();
+      if (!data.success || !data.addresses || !data.addresses.length) return;
+
+      savedAddresses = data.addresses;
+      refreshSavedAddressUI();
+    } catch (e) {
+      console.error('Error loading saved addresses:', e);
+    }
+  }
+
+  function fillSavedAddressOptions(selectEl) {
+    selectEl.innerHTML = '<option value="">+ Use a new address</option>';
+    savedAddresses.forEach(function (addr) {
+      var opt = document.createElement('option');
+      opt.value = addr.id;
+      opt.textContent = (addr.label || 'Home') + ' — ' + addr.addressLine1 + ', ' + addr.city + (addr.isDefault ? ' (Default)' : '');
+      selectEl.appendChild(opt);
+    });
+  }
+
+  // Fills the shared row's dropdown, and (re)populates any per-package rows
+  // already on screen — called once loading finishes, so it works whichever
+  // finishes first: the address fetch or the per-package rows rendering.
+  function refreshSavedAddressUI() {
+    if (!savedAddresses.length) return;
+
+    var select = document.getElementById('savedAddressSelect');
+    var row = document.getElementById('savedAddressRow');
+    if (select && row) {
+      fillSavedAddressOptions(select);
+      row.style.display = 'block';
+      var saveRow = document.getElementById('saveAddressRow');
+      if (saveRow) saveRow.style.display = 'flex';
+
+      var def = savedAddresses.find(function (a) { return a.isDefault; });
+      var addressLineInput = document.querySelector('#sharedLocationRow [name="addressLine"]');
+      if (def && addressLineInput && !addressLineInput.value) {
+        select.value = def.id;
+        applySavedAddress(def.id);
+      }
+    }
+
+    document.querySelectorAll('#perPackageDateTimeRows .ppdt-row').forEach(function (row) {
+      setupSavedAddressForRow(row, true);
+    });
+  }
+
+  // Wires up the saved-address dropdown inside one per-package row.
+  // allowPreselect: pre-fill the default saved address, but only into a
+  // row that's genuinely empty (a brand-new row, or one nothing's been
+  // typed into yet) — never overwrite something the admin/customer typed.
+  function setupSavedAddressForRow(row, allowPreselect) {
+    var wrap = row.querySelector('.ppdt-saved-address-wrap');
+    var select = row.querySelector('.ppdt-saved-address');
+    var saveRow = row.querySelector('.ppdt-save-row');
+    if (!wrap || !select) return;
+    if (!savedAddresses.length) return;
+
+    fillSavedAddressOptions(select);
+    wrap.style.display = 'block';
+    if (saveRow) saveRow.style.display = 'flex';
+
+    select.onchange = function () {
+      applySavedAddressToFields({
+        addressLine: row.querySelector('.ppdt-addressline'),
+        landmark: row.querySelector('.ppdt-landmark'),
+        city: row.querySelector('.ppdt-city'),
+        area: row.querySelector('.ppdt-area'),
+        pincode: row.querySelector('.ppdt-pincode'),
+        saveRow: saveRow
+      }, select.value);
+    };
+
+    var addressLineEl = row.querySelector('.ppdt-addressline');
+    var def = savedAddresses.find(function (a) { return a.isDefault; });
+    if (allowPreselect && def && addressLineEl && !addressLineEl.value) {
+      select.value = def.id;
+      select.onchange();
+    }
+  }
+
+  // Shared logic for filling in address fields (whether the shared row's
+  // name="" inputs or a per-package row's class-based inputs) from a saved
+  // address record.
+  function applySavedAddressToFields(fields, addressId) {
+    if (!addressId) {
+      // "Use a new address" — leave fields as-is for manual entry and
+      // offer to save whatever gets typed in.
+      if (fields.saveRow) fields.saveRow.style.display = 'flex';
+      return;
+    }
+
+    var addr = savedAddresses.find(function (a) { return a.id === addressId; });
+    if (!addr) return;
+
+    if (fields.addressLine) fields.addressLine.value = addr.addressLine1 || '';
+    if (fields.landmark) fields.landmark.value = addr.addressLine2 || '';
+    if (fields.pincode) fields.pincode.value = addr.pincode || '';
+
+    // Best-effort: match the saved pincode back to a known area so the
+    // "Area / Locality" dropdown (used for artist location-matching)
+    // still gets filled in.
+    var savedCity = (typeof getCityInfo === 'function' && addr.city && getCityInfo(addr.city).city === addr.city) ? addr.city : null;
+    if (fields.city && savedCity) {
+      fields.city.value = savedCity;
+      fields.city.dispatchEvent(new Event('change'));   // reloads that city's areas + state label
+      if (fields.pincode) fields.pincode.value = addr.pincode || '';
+    }
+    if (fields.area && addr.pincode && typeof findAreaByPincode === 'function') {
+      var match = findAreaByPincode(addr.pincode, savedCity || (fields.city && fields.city.value));
+      if (match) {
+        if (fields.city && fields.city.value !== match.city) {
+          fields.city.value = match.city;
+          fields.city.dispatchEvent(new Event('change'));
+          if (fields.pincode) fields.pincode.value = addr.pincode || '';
+        }
+        fields.area.value = match.area;
+      }
+    }
+
+    // Already saved — no need to offer saving it again.
+    if (fields.saveRow) fields.saveRow.style.display = 'none';
+  }
+
+  function applySavedAddress(addressId) {
+    var row = document.getElementById('sharedLocationRow');
+    if (!row) return;
+    applySavedAddressToFields({
+      addressLine: row.querySelector('[name="addressLine"]'),
+      landmark: row.querySelector('[name="landmark"]'),
+      city: row.querySelector('[name="city"]'),
+      area: row.querySelector('[name="area"]'),
+      pincode: row.querySelector('[name="pincode"]'),
+      saveRow: document.getElementById('saveAddressRow')
+    }, addressId);
+  }
+
+  // Persists a freshly-typed address to the customer's account.
+  async function saveNewAddress(addressLine, pincode, landmark, city) {
+    city = city || 'Hyderabad';
+    var user = typeof getUser === 'function' ? getUser() : null;
+    if (!user || !addressLine) return;
+
+    try {
+      var token = localStorage.getItem('userToken');
+      await fetch('/api/customers/' + user.id + '/addresses', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+        },
+        body: JSON.stringify({
+          label: 'Home',
+          fullName: user.name || '',
+          phone: user.phone || '',
+          addressLine1: addressLine,
+          addressLine2: landmark || '',
+          city: city,
+          state: getStateForCity(city),
+          pincode: pincode || '',
+          country: 'India',
+          isDefault: savedAddresses.length === 0
+        })
+      });
+    } catch (e) {
+      console.error('Error saving address:', e);
+    }
+  }
+
+  // Shared-row version: only saves if "Save this address" is checked and
+  // the customer typed a new address rather than picking a saved one.
+  function maybeSaveNewAddress(addressLine, area, pincode, landmark, city) {
+    var checkbox = document.getElementById('saveAddressCheckbox');
+    if (!checkbox || !checkbox.checked) return;
+    var select = document.getElementById('savedAddressSelect');
+    if (select && select.value) return; // an existing saved address was used, not a new one
+    saveNewAddress(addressLine, pincode, landmark, city);
+  }
+
+  // Per-package-row version of the same check.
+  function maybeSaveNewAddressFromRow(row) {
+    var checkbox = row.querySelector('.ppdt-save-checkbox');
+    if (!checkbox || !checkbox.checked) return;
+    var select = row.querySelector('.ppdt-saved-address');
+    if (select && select.value) return;
+    var addressLine = row.querySelector('.ppdt-addressline').value.trim();
+    var pincode = row.querySelector('.ppdt-pincode').value;
+    var landmark = row.querySelector('.ppdt-landmark').value.trim();
+    saveNewAddress(addressLine, pincode, landmark, row.querySelector('.ppdt-city').value);
+  }
+  window.applySavedAddress = applySavedAddress; // saved-address dropdown calls this from its onchange
+})();
+</script>
+<script>
+/* hidden per-package rows must not block validation when "same date/time" is on */
+(function(){
+  var t=document.getElementById('sameDateTimeToggle'),rows=document.getElementById('perPackageDateTimeRows');
+  if(!t||!rows)return;
+  function sync(){var same=t.checked;rows.querySelectorAll('input,select,textarea').forEach(function(e){e.disabled=same;});}
+  t.addEventListener('change',function(){setTimeout(sync,0)});
+  new MutationObserver(sync).observe(rows,{childList:true,subtree:true});
+  document.getElementById('bookingForm').addEventListener('submit',sync,true);
+  sync();
+})();
+</script>
+<script>
+(function(){var w=document.querySelector('.wa-float');if(w&&typeof fbq==='function'){w.addEventListener('click',function(){fbq('track','Contact',{content_name:'WhatsApp inquiry'})})}})();
+</script>
+<script src="js/glamai-engine.js?v=14" defer></script><script src="js/glamai.js?v=14" defer></script>
+</body>
+</html>

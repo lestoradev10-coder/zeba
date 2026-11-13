@@ -1,0 +1,23 @@
+/* Glam by Zebaish — login / register / reset pages (beauty design) */
+.auth.top .auth-r{align-items:flex-start}
+.auth-f h1{text-transform:none}
+.pw{position:relative}.pw input{padding-right:48px}
+.pw button{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:var(--muted);transition:.2s}
+.pw button:hover{color:var(--head);background:var(--lav)}.pw svg.i{width:18px;height:18px}
+.auth-msg{display:none;border-radius:14px;padding:12px 14px;font-size:.9rem;margin-bottom:16px;line-height:1.45}
+.auth-msg.show{display:block}
+.auth-msg.err{background:#fdecf1;color:#a3173f;border:1px solid #f4c6d3}
+.auth-msg.ok{background:#eaf6ee;color:#1d6b3a;border:1px solid #bfe3cc}
+.auth-row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:-4px 0 20px;font-size:.88rem}
+.chk{display:flex;align-items:center;gap:9px;color:var(--ink);cursor:pointer}
+.chk input{width:17px;height:17px;accent-color:var(--btn);flex:none}
+.auth-row a,.chk a{color:var(--head);font-weight:600;text-decoration:underline}
+.chk.terms{margin:2px 0 20px;align-items:flex-start;font-size:.88rem;line-height:1.4}.chk.terms input{margin-top:2px}
+.auth-sec{font-family:var(--display);font-size:1.15rem;color:var(--head);margin:6px 0 14px;padding-top:16px;border-top:1px solid var(--line)}
+.fld .hint{font-size:.78rem;color:var(--muted)}
+.fld input[type=file]{padding:11px 14px;background:var(--surface)}
+.fld input[type=file]::file-selector-button{margin-right:12px;border:0;border-radius:99px;padding:8px 16px;background:var(--btn);color:var(--btn-ink);font:inherit;font-size:.82rem;font-weight:600;cursor:pointer}
+.btn[disabled]{opacity:.65;cursor:not-allowed}
+.auth-ico{width:56px;height:56px;border-radius:50%;background:var(--lav);display:grid;place-items:center;color:var(--gold);margin-bottom:16px}.auth-ico svg.i{width:26px;height:26px}
+.auth-f.sm{width:min(460px,100%)}
+@media(max-width:900px){.auth.top .auth-r{padding:24px 6px}}
