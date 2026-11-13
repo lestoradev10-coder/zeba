@@ -163,3 +163,13 @@
 /* cart badge always visible, shows 0 when the cart is empty */
 .gz-shell .ic-btn>#cartBadge{position:absolute;top:2px;right:0;min-width:19px;height:19px;border-radius:99px;background:var(--gold);color:#fff;font-size:.7rem;font-weight:700;display:grid;place-items:center;padding:0 5px;border:2px solid var(--bg)}
 .gz-shell .drawer:not(.open){box-shadow:none}
+/* checkout's Webflow css paints every button[class*="btn"] purple with !important — keep the header icon buttons like the other pages */
+.gz-shell button.ic-btn,.gz-shell button.ic-btn.sbtn,.gz-shell button.ic-btn.menu-btn{background:transparent!important;border:0!important;border-color:transparent!important;color:var(--head)!important;box-shadow:none!important}
+.gz-shell button.ic-btn:hover{background:var(--lav)!important}
+/* checkout's own css resizes logos — keep the shared sizes */
+.gz-shell .hdr .logo img{height:40px!important;width:auto!important;max-width:100%!important}
+.gz-shell .ftr .logo img{height:62px!important;width:auto!important;max-width:100%!important}
+@media(max-width:600px){.gz-shell .hdr .logo img{height:26px!important}}
+.gz-shell .hdr .logo{flex:0 1 auto;display:inline}
+@media(max-width:600px){.gz-shell .hdr .logo{flex:none}}
+.gz-shell button.ic-btn svg,.gz-shell button.ic-btn svg *{color:var(--head)!important;stroke:currentColor!important}

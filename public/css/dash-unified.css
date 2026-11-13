@@ -1,0 +1,129 @@
+/* Glam by Zebaish — dashboard unified layout (customer + artist)
+   Presentation only. No markup, content, JS or API changes.
+   Loaded after dash.css. Turns the separate boxed pieces (greeting, stat cards,
+   sidebar, content, order cards) into ONE continuous account sheet:
+   greeting band -> stats strip -> sidebar | content, joined by hairlines. */
+
+html:has(body[data-page=dash]),html body[data-page=dash]{background:var(--surface)!important}
+
+/* ---------- title sits quietly above the sheet ---------- */
+html body[data-page=dash] .dashboard-title{margin-bottom:20px!important}
+
+/* ---------- 1. greeting band = top of the sheet ---------- */
+html body[data-page=dash] .user-greeting{
+  margin:0!important;
+  border:1px solid var(--line)!important;border-bottom:0!important;
+  border-radius:32px 32px 0 0!important;
+  padding:26px clamp(20px,3.2vw,40px)!important;
+  background:linear-gradient(115deg,#fff 0%,var(--lav) 55%,#f9e9f0 100%)!important;
+}
+
+/* ---------- 2. stats = one strip, hairline dividers, no cards ---------- */
+html body[data-page=dash] .stats-grid{
+  display:grid!important;
+  grid-template-columns:none!important;
+  grid-auto-flow:column;grid-auto-columns:1fr;
+  gap:0!important;margin:0!important;
+  background:#fff!important;
+  border:1px solid var(--line)!important;border-bottom:0!important;
+}
+html body[data-page=dash] .stat-card{
+  background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;
+  padding:22px clamp(16px,2.4vw,32px)!important;
+  transform:none!important;
+}
+html body[data-page=dash] .stat-card + .stat-card{border-left:1px solid var(--line)!important}
+html body[data-page=dash] .stat-card:hover{transform:none!important;box-shadow:none!important;background:var(--surface)!important}
+html body[data-page=dash] .stat-card::before{margin-bottom:12px}
+
+/* ---------- 3. sidebar | content = one panel, one divider ---------- */
+html body[data-page=dash] .dashboard-wrapper{
+  display:grid!important;
+  grid-template-columns:260px minmax(0,1fr)!important;
+  gap:0!important;align-items:start;
+  border:1px solid var(--line)!important;
+  border-radius:0 0 32px 32px!important;
+  /* tinted left column that runs the full height, 1px divider, white content */
+  background:linear-gradient(90deg,var(--surface) 0,var(--surface) 259px,var(--line) 259px,var(--line) 260px,#fff 260px)!important;
+}
+html body[data-page=dash] .dashboard-sidebar{
+  position:sticky;top:24px;
+  background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;
+  padding:20px 16px!important;gap:4px;
+}
+html body[data-page=dash] .sidebar-item:not(.active):hover{background:#fff!important}
+html body[data-page=dash] .sidebar-item[onclick*=logout]{
+  position:relative;border:0!important;border-radius:99px!important;margin-top:18px;box-shadow:none!important;
+}
+html body[data-page=dash] .sidebar-item[onclick*=logout]::before{
+  content:"";position:absolute;left:10px;right:10px;top:-10px;height:1px;background:var(--line);
+}
+html body[data-page=dash] .dashboard-content{
+  background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;
+  padding:clamp(22px,3.2vw,40px)!important;min-height:480px;
+}
+
+/* ---------- 4. inside the content: rows and lines, not boxes ---------- */
+html body[data-page=dash] .section-header{padding-bottom:16px!important;border-bottom:1px solid var(--line)!important;margin-bottom:8px!important}
+
+/* quick actions -> simple pills */
+html body[data-page=dash] .quick-actions{display:flex!important;flex-wrap:wrap;gap:10px!important;margin-bottom:28px!important}
+html body[data-page=dash] .quick-action{
+  flex-direction:row!important;gap:10px!important;padding:11px 20px!important;
+  border:0!important;border-radius:99px!important;background:var(--lav)!important;
+  font-size:.9rem;
+}
+html body[data-page=dash] .quick-action i{font-size:1rem!important}
+html body[data-page=dash] .quick-action:hover{background:var(--lav2)!important;transform:none!important}
+
+/* order / booking cards -> divided rows */
+html body[data-page=dash] .orders-list{gap:0!important}
+html body[data-page=dash] .order-card{
+  background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;
+  border-bottom:1px solid var(--line)!important;padding:20px 0!important;
+}
+html body[data-page=dash] .order-card:last-child{border-bottom:0!important}
+html body[data-page=dash] .order-card:hover{box-shadow:none!important;background:transparent!important}
+
+/* tables -> open table with hairlines */
+html body[data-page=dash] .table-wrapper{border:0!important;border-radius:0!important}
+html body[data-page=dash] .data-table th{background:transparent!important;border-bottom:1px solid var(--line)!important;padding-left:0!important}
+html body[data-page=dash] .data-table td:first-child{padding-left:0!important}
+html body[data-page=dash] .data-table tr:hover td{background:var(--surface)!important}
+
+/* notifications -> divided rows */
+html body[data-page=dash] .notification-item{
+  border:0!important;border-bottom:1px solid var(--line)!important;border-radius:0!important;
+  margin-bottom:0!important;padding:16px 0!important;background:transparent!important;
+}
+html body[data-page=dash] .notification-item.unread{background:transparent!important;border-left:0!important;box-shadow:inset 3px 0 0 var(--gold);padding-left:16px!important}
+
+/* empty states -> calm tinted area, no dashed box */
+html body[data-page=dash] .empty-state{border:0!important;border-radius:24px!important;background:var(--surface)!important}
+
+/* ---------- responsive ---------- */
+@media(max-width:1000px){
+  html body[data-page=dash] .stats-grid{grid-auto-flow:row;grid-auto-columns:auto;grid-template-columns:repeat(2,1fr)!important}
+  html body[data-page=dash] .stat-card + .stat-card{border-left:0!important}
+  html body[data-page=dash] .stat-card:nth-child(even){border-left:1px solid var(--line)!important}
+  html body[data-page=dash] .stat-card:nth-child(n+3){border-top:1px solid var(--line)!important}
+  html body[data-page=dash] .stat-card:last-child:nth-child(odd){grid-column:1/-1}
+}
+@media(max-width:900px){
+  html body[data-page=dash] .dashboard-wrapper{grid-template-columns:1fr!important;background:#fff!important}
+  html body[data-page=dash] .dashboard-sidebar{
+    position:static;display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;gap:6px;
+    padding:12px 14px!important;background:var(--surface)!important;
+    border-bottom:1px solid var(--line)!important;scrollbar-width:none;
+  }
+  html body[data-page=dash] .dashboard-sidebar::-webkit-scrollbar{display:none}
+  html body[data-page=dash] .sidebar-item{flex:none;white-space:nowrap}
+  html body[data-page=dash] .sidebar-item[onclick*=logout]{margin:0}
+  html body[data-page=dash] .sidebar-item[onclick*=logout]::before{display:none}
+  html body[data-page=dash] .dashboard-content{min-height:360px}
+}
+@media(max-width:520px){
+  html body[data-page=dash] .user-greeting{border-radius:26px 26px 0 0!important}
+  html body[data-page=dash] .dashboard-wrapper{border-radius:0 0 26px 26px!important}
+  html body[data-page=dash] .stat-card{padding:16px!important}
+}
