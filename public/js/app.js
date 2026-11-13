@@ -127,7 +127,7 @@
   }
   function footerHTML() {
     var noNews = document.body.hasAttribute("data-auth"); /* login / register / reset pages: no newsletter */
-    return (noNews ? '' : '<section class="news-wrap"><div class="news"><div><h2>New looks first.</h2><p>New packages, offers and the odd beauty note from our artists. Twice a month at most.</p></div>' +
+    return (noNews ? '' : '<section class="news-wrap"><div class="news"><div><h2>New looks first.</h2><p>New packages, offers and the odd beauty note from our artists. </p></div>' +
       '<form id="newsForm" novalidate><label for="nemail">Email address</label><div class="row"><input id="nemail" type="email" placeholder="you@example.com" autocomplete="email"><button class="btn" type="submit">Sign up</button></div><small>Unsubscribe any time. We never share your email.</small></form></div></section>') +
       '<footer class="ftr"><div class="ftr-g"><div><a class="logo" href="index.html"><img src="images/logo.png" alt="Glam by Zebaish"></a>' +
       '<p class="bl">Professional makeup artistry at your doorstep. Empowering beauty, creating careers, building futures.</p>' +
