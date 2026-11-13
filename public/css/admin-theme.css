@@ -64,3 +64,9 @@ html body,html body *:not(i):not([class*="fa-"]):not(.fa):not(svg):not(svg *){fo
 html body :is(h1,h2,h3,h4){font-family:var(--display)!important;letter-spacing:-.02em}
 html body :is(button,input,select,textarea):not([type=checkbox]):not([type=radio]){border-radius:99px}
 html body :is(textarea,select){border-radius:14px}
+
+/* v34: light lavender admin sidebar to match the purple/gold logo */
+html body .sidebar .nav-link:not(.active):hover{background:#fff!important;color:#3d1157!important}
+html body .sidebar .nav-link.active{box-shadow:0 6px 16px -8px rgba(74,23,102,.6)}
+html body .sidebar .nav-link .badge-count{color:#fff!important}
+html body .sidebar .nav-link.text-red-600:hover{background:#fee2e2!important;color:#b91c1c!important}

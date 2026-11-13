@@ -43,10 +43,10 @@ src="https://www.facebook.com/tr?id=1635552701268110&ev=PageView&noscript=1"
         ::-webkit-scrollbar-thumb:hover { background: #3a0f70; }
 
         /* Sidebar keeps a dark-themed scrollbar so it matches its own background */
-        .sidebar { scrollbar-color: #6a5b8a #1C2434; }
-        .sidebar ::-webkit-scrollbar-track { background: #1C2434; }
-        .sidebar ::-webkit-scrollbar-thumb { background: #6a5b8a; }
-        .sidebar ::-webkit-scrollbar-thumb:hover { background: #8577a8; }
+        .sidebar { scrollbar-color: #b9a3cf #f3ecf9; }
+        .sidebar ::-webkit-scrollbar-track { background: #f3ecf9; }
+        .sidebar ::-webkit-scrollbar-thumb { background: #b9a3cf; }
+        .sidebar ::-webkit-scrollbar-thumb:hover { background: #8f73b0; }
 
         /* ========================================
            WIZARD STEPS (landscape Add Artist modal)
@@ -123,9 +123,9 @@ src="https://www.facebook.com/tr?id=1635552701268110&ev=PageView&noscript=1"
             transition: all 0.2s ease;
             cursor: pointer;
         }
-        .nav-link:hover { background: #333A48; }
+        .nav-link:hover { background: #fff; }
         .nav-link.active {
-            background: #333A48;
+            background: #4a1766;
             color: white;
         }
         .nav-link .badge-count {
@@ -305,7 +305,7 @@ button[type="submit"]:hover, button.glam-pkg-addcart:hover, .glam-checkout-btn:h
 .signature-glam-slider-title { white-space:nowrap; }
 @media(max-width:600px){.signature-glam-slider-title{font-size:clamp(1.7rem,8vw,2.5rem);white-space:normal;}.capsule-login-btn{height:50px !important;}}
 </style>
-<link rel="stylesheet" href="css/admin-theme.css?v=15"></head>
+<link rel="stylesheet" href="css/admin-theme.css?v=16"></head>
 <body class="bg-gray-50">
 
     <!-- ========================================
@@ -316,50 +316,50 @@ button[type="submit"]:hover, button.glam-pkg-addcart:hover, .glam-checkout-btn:h
     <!-- ========================================
     SIDEBAR - REMOVED PACKAGES
     ======================================== -->
-    <aside class="sidebar sidebar-transition w-[280px] bg-[#1C2434] text-white flex flex-col fixed left-0 top-0 h-full z-50" id="sidebar">
+    <aside class="sidebar sidebar-transition w-[280px] bg-[#f3ecf9] text-[#3d1157] border-r border-[#e0d3ec] flex flex-col fixed left-0 top-0 h-full z-50" id="sidebar">
         <!-- Brand with Logo -->
-        <div class="p-5 border-b border-[#333A48] flex items-center gap-3">
-            <img src="/aa.png" alt="Glam by Zebaish" class="h-12 w-auto object-contain">
+        <div class="p-5 border-b border-[#e0d3ec] flex items-center gap-3">
+            <img src="/images/logo.png" alt="Glam by Zebaish" class="h-10 w-auto max-w-full object-contain">
         </div>
 
         <!-- Navigation - Packages REMOVED -->
         <nav class="flex-1 px-4 py-6 overflow-y-auto">
             <div class="mb-6">
-                <p class="text-xs uppercase text-gray-500 font-semibold px-2 mb-2 tracking-wider">Main Menu</p>
+                <p class="text-xs uppercase text-[#6e6279] font-semibold px-2 mb-2 tracking-wider">Main Menu</p>
                 
                 <button type="button" class="nav-link active flex items-center gap-3 py-2.5 px-4 rounded-lg text-sm font-medium w-full text-left" data-section="dashboard">
                     <i class="fa-solid fa-chart-simple w-5 text-center"></i> Dashboard
                 </button>
-                <button type="button" class="nav-link flex items-center gap-3 py-2.5 px-4 rounded-lg text-sm font-medium text-gray-400 w-full text-left" data-section="orders">
+                <button type="button" class="nav-link flex items-center gap-3 py-2.5 px-4 rounded-lg text-sm font-medium text-[#6e6279] w-full text-left" data-section="orders">
                     <i class="fa-solid fa-receipt w-5 text-center"></i> Orders
                     <span class="badge-count" id="orderBadge">0</span>
                 </button>
-                <button type="button" class="nav-link flex items-center gap-3 py-2.5 px-4 rounded-lg text-sm font-medium text-gray-400 w-full text-left" data-section="artists">
+                <button type="button" class="nav-link flex items-center gap-3 py-2.5 px-4 rounded-lg text-sm font-medium text-[#6e6279] w-full text-left" data-section="artists">
                     <i class="fa-solid fa-user-tie w-5 text-center"></i> Artists
                 </button>
-                <button type="button" class="nav-link flex items-center gap-3 py-2.5 px-4 rounded-lg text-sm font-medium text-gray-400 w-full text-left" data-section="customers">
+                <button type="button" class="nav-link flex items-center gap-3 py-2.5 px-4 rounded-lg text-sm font-medium text-[#6e6279] w-full text-left" data-section="customers">
                     <i class="fa-solid fa-users w-5 text-center"></i> Customers
                 </button>
-                <button type="button" class="nav-link flex items-center gap-3 py-2.5 px-4 rounded-lg text-sm font-medium text-gray-400 w-full text-left" data-section="payments">
+                <button type="button" class="nav-link flex items-center gap-3 py-2.5 px-4 rounded-lg text-sm font-medium text-[#6e6279] w-full text-left" data-section="payments">
                     <i class="fa-solid fa-credit-card w-5 text-center"></i> Payments
                 </button>
-                <button type="button" class="nav-link flex items-center gap-3 py-2.5 px-4 rounded-lg text-sm font-medium text-gray-400 w-full text-left" data-section="affiliate">
+                <button type="button" class="nav-link flex items-center gap-3 py-2.5 px-4 rounded-lg text-sm font-medium text-[#6e6279] w-full text-left" data-section="affiliate">
                     <i class="fa-solid fa-gift w-5 text-center"></i> Affiliate
                 </button>
-                <button type="button" class="nav-link flex items-center gap-3 py-2.5 px-4 rounded-lg text-sm font-medium text-gray-400 w-full text-left" data-section="reviews">
+                <button type="button" class="nav-link flex items-center gap-3 py-2.5 px-4 rounded-lg text-sm font-medium text-[#6e6279] w-full text-left" data-section="reviews">
                     <i class="fa-solid fa-star w-5 text-center"></i> Reviews
                 </button>
             </div>
 
             <!-- Logout -->
-            <div class="border-t border-[#333A48] pt-4 mt-2">
-                <button type="button" onclick="logout()" class="nav-link flex items-center gap-3 py-2.5 px-4 rounded-lg text-sm font-medium text-red-400 hover:bg-red-900/20 w-full text-left">
+            <div class="border-t border-[#e0d3ec] pt-4 mt-2">
+                <button type="button" onclick="logout()" class="nav-link flex items-center gap-3 py-2.5 px-4 rounded-lg text-sm font-medium text-red-600 hover:bg-red-100 w-full text-left">
                     <i class="fa-solid fa-right-from-bracket w-5 text-center"></i> Logout
                 </button>
             </div>
         </nav>
 
-        <div class="p-4 border-t border-[#333A48] text-xs text-gray-500 text-center">
+        <div class="p-4 border-t border-[#e0d3ec] text-xs text-[#6e6279] text-center">
             <p>© 2026 Glam by Zebaish</p>
         </div>
     </aside>
