@@ -1141,3 +1141,5 @@ details.q[open] summary .pl{background:var(--btn)}
   .slide .bg img{object-position:center 12%}
 }
 .drawer:not(.open){box-shadow:none}
+/* FAQ heading: 'Frequently Asked' on the first line on desktop */
+@media(min-width:901px){.faq-l .h2{font-size:clamp(2.2rem,3.6vw,3.8rem);white-space:nowrap}}
